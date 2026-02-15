@@ -71,9 +71,12 @@ public class GroundMover : MonoBehaviour
 
     private void MoveUp()
     {
-        Vector2 moveDelta = Vector2.up * _currentMoveSpeed * Time.deltaTime;
+        float deltaY = _currentMoveSpeed * Time.deltaTime;
+        float positionX = Camera.main.transform.position.x;
 
-        transform.Translate(moveDelta);
+        Vector3 deltaPosition = new Vector3(positionX, transform.position.y + deltaY, 0);  
+
+        transform.position = deltaPosition;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -107,8 +110,10 @@ public class GroundMover : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position, 
-            new Vector2((Camera.main.orthographicSize * 2) * Camera.main.aspect, 
+        Gizmos.color = Color.yellow;
+
+        Gizmos.DrawCube(transform.position,
+            new Vector2((Camera.main.orthographicSize * 2) * Camera.main.aspect,
             _deathAreaHeight));
     }
 }
