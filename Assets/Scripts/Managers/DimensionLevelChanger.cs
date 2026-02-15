@@ -53,4 +53,10 @@ public class DimensionLevelChanger : MonoBehaviour
         _currentActiveTilemap = _dimensionTilemapMap[newDimension];
         _currentActiveTilemap.enabled = true;
     }
+
+    private void OnDestroy()
+    {
+        DimensionStateHolder.Instance.OnDimensionChanged 
+            -= DimensionStateHolder_OnDimensionChanged;
+    }
 }

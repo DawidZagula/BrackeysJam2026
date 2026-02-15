@@ -30,10 +30,19 @@ public class GroundMover : MonoBehaviour
 
     private void Start()
     {
-        GameStateManager.Instance.OnStateChanged += GameStateManager_OnStateChanged;
+        SubscribeEvents();
 
         SetDeathAreaSize();
     }
+
+    private void SubscribeEvents()
+    {
+        GameStateManager.Instance.OnStateChanged
+            += GameStateManager_OnStateChanged;
+        DimensionStateHolder.Instance.OnDimensionChanged
+            += DimensionStateHolder_OnDimensionChanged;
+    }
+
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
@@ -43,6 +52,10 @@ public class GroundMover : MonoBehaviour
             return;
         }
         _isMoving = false;
+    }
+    private void DimensionStateHolder_OnDimensionChanged(object sender, DimensionStateHolder.OnDimensionChangedEventArgs e)
+    {
+        IncreaseSpeed();
     }
 
     private void SetDeathAreaSize()
@@ -87,7 +100,7 @@ public class GroundMover : MonoBehaviour
         }
     }
 
-    public void IncreaseSpeed()
+    private void IncreaseSpeed()
     {
         float multiplier = 1f + _speedIncreasePercent;
         _currentMoveSpeed *= multiplier;
@@ -95,7 +108,7 @@ public class GroundMover : MonoBehaviour
         _currentMoveSpeed = Mathf.Min(_currentMoveSpeed, _maxSpeed);
     }
 
-    public void DecreaseSpeed()
+    private void DecreaseSpeed()
     {
         float multiplier = 1f + _speedIncreasePercent;
         _currentMoveSpeed /= multiplier;
@@ -105,7 +118,14 @@ public class GroundMover : MonoBehaviour
 
     private void OnDestroy()
     {
+        UnsubscribeEvents();
+    }
+
+    private void UnsubscribeEvents()
+    {
         GameStateManager.Instance.OnStateChanged -= GameStateManager_OnStateChanged;
+        DimensionStateHolder.Instance.OnDimensionChanged
+          += DimensionStateHolder_OnDimensionChanged;
     }
 
     private void OnDrawGizmos()
