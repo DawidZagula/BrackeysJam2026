@@ -15,6 +15,7 @@ public class InputReader : MonoBehaviour
     public event EventHandler OnJumpPressed;
     public event EventHandler OnJumpReleased;
 
+    public event EventHandler OnDimensionChangePressed;
 
     private void Awake()
     {
@@ -37,26 +38,40 @@ public class InputReader : MonoBehaviour
     {
         if (e.NewGameState == GameState.Started)
         {
-            _playerInputActions.Player.Move.started += Move_started;
-            _playerInputActions.Player.Move.canceled += Move_canceled;
-
-            _playerInputActions.Player.Jump.started += Jump_started;
-            _playerInputActions.Player.Jump.canceled += Jump_canceled;
+            SubscribeGameplayInputEvents();
             return;
         }
         else if (e.NewGameState == GameState.GameOver)
         {
-            OnMove?.Invoke(this, new MoveEventArgs { MoveInput = 0f });
-            OnJumpReleased?.Invoke(this, EventArgs.Empty);
-
-            _playerInputActions.Player.Move.started -= Move_started;
-            _playerInputActions.Player.Move.canceled -= Move_canceled;
-
-            _playerInputActions.Player.Jump.started -= Jump_started;
-            _playerInputActions.Player.Jump.canceled -= Jump_canceled;
-
-            _playerInputActions.Player.Disable();
+            UnsubscribeGameplayInputEvents();
         }
+    }
+
+    private void SubscribeGameplayInputEvents()
+    {
+        _playerInputActions.Player.Move.started += Move_started;
+        _playerInputActions.Player.Move.canceled += Move_canceled;
+
+        _playerInputActions.Player.Jump.started += Jump_started;
+        _playerInputActions.Player.Jump.canceled += Jump_canceled;
+
+        _playerInputActions.Player.ChangeDimension.started += ChangeDimension_started;
+    }
+
+    private void UnsubscribeGameplayInputEvents()
+    {
+        OnMove?.Invoke(this, new MoveEventArgs { MoveInput = 0f });
+        OnJumpReleased?.Invoke(this, EventArgs.Empty);
+
+        _playerInputActions.Player.Move.started -= Move_started;
+        _playerInputActions.Player.Move.canceled -= Move_canceled;
+
+        _playerInputActions.Player.Jump.started -= Jump_started;
+        _playerInputActions.Player.Jump.canceled -= Jump_canceled;
+
+        _playerInputActions.Player.ChangeDimension.started -= ChangeDimension_started;
+
+        _playerInputActions.Player.Disable();
     }
 
     private void Move_started(InputAction.CallbackContext obj)
@@ -77,6 +92,11 @@ public class InputReader : MonoBehaviour
     private void Jump_canceled(InputAction.CallbackContext obj)
     {
         OnJumpReleased?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void ChangeDimension_started(InputAction.CallbackContext obj)
+    {
+       OnDimensionChangePressed?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnDisable()
