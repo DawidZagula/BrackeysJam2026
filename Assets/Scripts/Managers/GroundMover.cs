@@ -16,6 +16,7 @@ public class GroundMover : MonoBehaviour
     //Run-time state
     [Header("For debugging only")]
     [SerializeField] private float _currentMoveSpeed;
+    private bool _isMoving;
 
     //Components
     private BoxCollider2D _deathAreaCollider;
@@ -29,7 +30,19 @@ public class GroundMover : MonoBehaviour
 
     private void Start()
     {
+        GameStateManager.Instance.OnStateChanged += GameStateManager_OnStateChanged;
+
         SetDeathAreaSize();
+    }
+
+    private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
+    {
+        if (e.NewGameState == GameState.Started)
+        {
+            _isMoving = true;
+            return;
+        }
+        _isMoving = false;
     }
 
     private void SetDeathAreaSize()
@@ -41,6 +54,8 @@ public class GroundMover : MonoBehaviour
 
     private void Update()
     {
+        if (!_isMoving) { return; }
+
         MoveUp();
 
         //For debugging
@@ -63,9 +78,9 @@ public class GroundMover : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerMover player))
+        if (collision.TryGetComponent(out PlayerDeathZoneRegister player))
         {
-            Debug.Log("Player hit");
+            player.ProceedDeath();
         }
     }
 
@@ -84,7 +99,11 @@ public class GroundMover : MonoBehaviour
 
         _currentMoveSpeed = Mathf.Max(_currentMoveSpeed, _minSpeed);
     }
-    
+
+    private void OnDestroy()
+    {
+        GameStateManager.Instance.OnStateChanged -= GameStateManager_OnStateChanged;
+    }
 
     private void OnDrawGizmos()
     {
