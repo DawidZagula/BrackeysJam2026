@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class DimensionStateHolder : MonoBehaviour
 {
+    public static DimensionStateHolder Instance { get; private set; }
+    
     [Header("For debugging only")]
     [SerializeField] private Dimension _currentDimension;
 
@@ -15,6 +17,11 @@ public class DimensionStateHolder : MonoBehaviour
         {
             this.newDimension = newDimension;
         }
+    }
+
+    private void Awake()
+    {
+        Instance = this;
     }
 
     private void Start()
