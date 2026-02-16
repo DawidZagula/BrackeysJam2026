@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -594435649, guid: db725cf75f73466439d958bc6beb12c5, type: 3}
+  m_Sprite: {fileID: 6723963429988506304, guid: 6597a49241fd11546bacb60797e46b2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,8 +146,8 @@ MonoBehaviour:
   _visualRenderer: {fileID: 2510517918592268103}
   _collider: {fileID: 7941383997424992608}
   _hasDifferentVisuals: 0
-  _lavaDimensionVisual: {fileID: -594435649, guid: db725cf75f73466439d958bc6beb12c5, type: 3}
-  _goofyDimensionVisual: {fileID: 551161333, guid: db725cf75f73466439d958bc6beb12c5, type: 3}
+  _lavaDimensionVisual: {fileID: 6723963429988506304, guid: 6597a49241fd11546bacb60797e46b2a, type: 3}
+  _goofyDimensionVisual: {fileID: -607636258, guid: 6597a49241fd11546bacb60797e46b2a, type: 3}
 --- !u!114 &470385934622654613
 MonoBehaviour:
   m_ObjectHideFlags: 0
