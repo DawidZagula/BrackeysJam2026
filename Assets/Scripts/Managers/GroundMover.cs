@@ -158,7 +158,7 @@ public class GroundMover : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
 
-        Gizmos.DrawCube(transform.position,
+        Gizmos.DrawWireCube(transform.position,
             new Vector2((Camera.main.orthographicSize * 2) * Camera.main.aspect,
             _deathAreaHeight));
     }
