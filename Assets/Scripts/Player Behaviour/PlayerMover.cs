@@ -9,6 +9,9 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private Vector2 _groundCheckSize;
     [SerializeField] private LayerMask _groundLayer;
 
+    [Header("Wall Check")]
+    [SerializeField] private float _wallCheckDistance = 0.1f;
+
     private enum JumpOrigin
     {
         None,
@@ -47,6 +50,19 @@ public class PlayerMover : MonoBehaviour
         _knockbackReceiver = GetComponent<KnockbackReceiver>();
         SetGravityScale(_configurationData.gravityScale);
         _isFacingRight = true;
+
+        // Preveent wall sticking
+        PhysicsMaterial2D noFriction = new PhysicsMaterial2D("PlayerNoFriction");
+        noFriction.friction = 0f;
+        noFriction.bounciness = 0f;
+        _rigidbody.sharedMaterial = noFriction;
+
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+        if (boxCollider != null && boxCollider.edgeRadius == 0f)
+        {
+            boxCollider.edgeRadius = 0.02f;
+            boxCollider.size -= Vector2.one * 0.02f * 2f;
+        }
     }
 
     private void Start()
@@ -187,9 +203,29 @@ public class PlayerMover : MonoBehaviour
         const float acceleration = 50f;
 
         float targetSpeed = _moveInput.x * _configurationData.moveSpeed;
+
+        // Prevents wall sticking while airborne
+        if (_moveInput.x != 0 && IsPushingIntoWall())
+        {
+            targetSpeed = 0f;
+        }
+
         float speedDifference = targetSpeed - _rigidbody.linearVelocity.x;
 
         _rigidbody.AddForce(Vector2.right * speedDifference * acceleration, ForceMode2D.Force);
+    }
+
+    private bool IsPushingIntoWall()
+    {
+        Collider2D col = GetComponent<Collider2D>();
+        float direction = _moveInput.x > 0 ? 1f : -1f;
+        RaycastHit2D hit = Physics2D.Raycast(
+            col.bounds.center,
+            Vector2.right * direction,
+            col.bounds.extents.x + _wallCheckDistance,
+            _groundLayer
+        );
+        return hit.collider != null;
     }
 
     private bool CanJump()
