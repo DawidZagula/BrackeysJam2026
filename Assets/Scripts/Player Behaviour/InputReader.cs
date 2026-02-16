@@ -17,6 +17,8 @@ public class InputReader : MonoBehaviour
 
     public event EventHandler OnDimensionChangePressed;
 
+    public event EventHandler OnTryUsePickup;
+
     private void Awake()
     {
         Instance = this;
@@ -56,6 +58,8 @@ public class InputReader : MonoBehaviour
         _playerInputActions.Player.Jump.canceled += Jump_canceled;
 
         _playerInputActions.Player.ChangeDimension.started += ChangeDimension_started;
+
+        _playerInputActions.Player.TryUsePickup.started += TryUsePickup_started;
     }
 
     private void UnsubscribeGameplayInputEvents()
@@ -70,6 +74,8 @@ public class InputReader : MonoBehaviour
         _playerInputActions.Player.Jump.canceled -= Jump_canceled;
 
         _playerInputActions.Player.ChangeDimension.started -= ChangeDimension_started;
+
+        _playerInputActions.Player.TryUsePickup.started -= TryUsePickup_started;
 
         _playerInputActions.Player.Disable();
     }
@@ -99,11 +105,15 @@ public class InputReader : MonoBehaviour
        OnDimensionChangePressed?.Invoke(this, EventArgs.Empty);
     }
 
+    private void TryUsePickup_started(InputAction.CallbackContext obj)
+    {
+        OnTryUsePickup?.Invoke(this, EventArgs.Empty);
+    }
+
     private void OnDisable()
     {
         _playerInputActions.Player.Move.started -= Move_started;
         _playerInputActions.Player.Move.canceled -= Move_canceled;
-
 
         _playerInputActions.Player.Jump.started -= Jump_started;
         _playerInputActions.Player.Jump.canceled -= Jump_canceled;

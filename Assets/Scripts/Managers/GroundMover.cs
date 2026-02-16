@@ -39,10 +39,13 @@ public class GroundMover : MonoBehaviour
     {
         GameStateManager.Instance.OnStateChanged
             += GameStateManager_OnStateChanged;
+
         DimensionStateHolder.Instance.OnDimensionChanged
             += DimensionStateHolder_OnDimensionChanged;
-    }
 
+        PickupHolder.Instance.OnUsedPickup 
+            += PickupHolder_OnUsedPickup;
+    }
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
     {
@@ -56,6 +59,11 @@ public class GroundMover : MonoBehaviour
     private void DimensionStateHolder_OnDimensionChanged(object sender, DimensionStateHolder.OnDimensionChangedEventArgs e)
     {
         IncreaseSpeed();
+    }
+
+    private void PickupHolder_OnUsedPickup(object sender, EventArgs e)
+    {
+        DecreaseSpeed();
     }
 
     private void SetDeathAreaSize()
@@ -123,9 +131,14 @@ public class GroundMover : MonoBehaviour
 
     private void UnsubscribeEvents()
     {
-        GameStateManager.Instance.OnStateChanged -= GameStateManager_OnStateChanged;
+        GameStateManager.Instance.OnStateChanged 
+            -= GameStateManager_OnStateChanged;
+
         DimensionStateHolder.Instance.OnDimensionChanged
-          += DimensionStateHolder_OnDimensionChanged;
+          -= DimensionStateHolder_OnDimensionChanged;
+
+        PickupHolder.Instance.OnUsedPickup
+          -= PickupHolder_OnUsedPickup;
     }
 
     private void OnDrawGizmos()

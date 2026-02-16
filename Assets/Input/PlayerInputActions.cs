@@ -118,6 +118,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TryUsePickup"",
+                    ""type"": ""Button"",
+                    ""id"": ""98cb11e8-2d3c-4fbf-8159-95630ee1f996"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -175,6 +184,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeDimension"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bac68e7a-ac89-43e6-ac6f-2d1b01b9ac66"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TryUsePickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +206,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_ChangeDimension = m_Player.FindAction("ChangeDimension", throwIfNotFound: true);
+        m_Player_TryUsePickup = m_Player.FindAction("TryUsePickup", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -269,6 +290,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_ChangeDimension;
+    private readonly InputAction m_Player_TryUsePickup;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -292,6 +314,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/ChangeDimension".
         /// </summary>
         public InputAction @ChangeDimension => m_Wrapper.m_Player_ChangeDimension;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TryUsePickup".
+        /// </summary>
+        public InputAction @TryUsePickup => m_Wrapper.m_Player_TryUsePickup;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -327,6 +353,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @ChangeDimension.started += instance.OnChangeDimension;
             @ChangeDimension.performed += instance.OnChangeDimension;
             @ChangeDimension.canceled += instance.OnChangeDimension;
+            @TryUsePickup.started += instance.OnTryUsePickup;
+            @TryUsePickup.performed += instance.OnTryUsePickup;
+            @TryUsePickup.canceled += instance.OnTryUsePickup;
         }
 
         /// <summary>
@@ -347,6 +376,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @ChangeDimension.started -= instance.OnChangeDimension;
             @ChangeDimension.performed -= instance.OnChangeDimension;
             @ChangeDimension.canceled -= instance.OnChangeDimension;
+            @TryUsePickup.started -= instance.OnTryUsePickup;
+            @TryUsePickup.performed -= instance.OnTryUsePickup;
+            @TryUsePickup.canceled -= instance.OnTryUsePickup;
         }
 
         /// <summary>
@@ -408,5 +440,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnChangeDimension(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "TryUsePickup" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTryUsePickup(InputAction.CallbackContext context);
     }
 }
