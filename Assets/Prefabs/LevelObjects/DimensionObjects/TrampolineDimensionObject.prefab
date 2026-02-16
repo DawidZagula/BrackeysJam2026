@@ -47,15 +47,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrampolineDimensionObject
   _visibilityDimension: 0
-  _isColliderAlwaysActive: 1
+  _isColliderAlwaysActive: 0
   _colliderActiveDimension: 0
   _isAlwaysTrigger: 0
   _triggerDimension: 0
   _visualRenderer: {fileID: 8479013984904803493}
   _collider: {fileID: 4600604798969529403}
-  _hasDifferentVisuals: 1
-  _lavaDimensionVisual: {fileID: 3816075634899246512, guid: 11d748ed44127fb4dbbc88e075832238, type: 3}
-  _goofyDimensionVisual: {fileID: 21300000, guid: 9e105f0cc15654d4db3495665b39d6f2, type: 3}
+  _hasDifferentVisuals: 0
+  _lavaDimensionVisual: {fileID: 0}
+  _goofyDimensionVisual: {fileID: 0}
   _trampolineActiveDimension: 0
   _jumpForce: 32
 --- !u!61 &4600604798969529403

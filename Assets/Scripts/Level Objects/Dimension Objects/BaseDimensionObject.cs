@@ -86,7 +86,10 @@ public abstract class BaseDimensionObject : MonoBehaviour
             ProcessTriggeredByPlayer(playerMover);
         }
     }
-    protected abstract void ProcessTriggeredByPlayer(PlayerMover playerMover);
+    protected virtual void ProcessTriggeredByPlayer(PlayerMover playerMover)
+    {
+        //Do nothing by default
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
