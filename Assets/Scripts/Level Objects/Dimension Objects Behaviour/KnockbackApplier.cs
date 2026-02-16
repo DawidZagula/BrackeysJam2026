@@ -25,5 +25,4 @@ public class KnockbackApplier : MonoBehaviour
         return Quaternion.AngleAxis(rotationAngle, Vector3.forward) * baseDirection;
     }
 
-   
 }

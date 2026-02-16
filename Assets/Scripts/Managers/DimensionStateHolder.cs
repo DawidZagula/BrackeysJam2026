@@ -5,8 +5,7 @@ public class DimensionStateHolder : MonoBehaviour
 {
     public static DimensionStateHolder Instance { get; private set; }
     
-    [Header("For debugging only")]
-    [SerializeField] private Dimension _currentDimension;
+    public Dimension CurrentDimension { get; private set; }
 
     public event EventHandler<OnDimensionChangedEventArgs> OnDimensionChanged;
     public class OnDimensionChangedEventArgs : EventArgs
@@ -37,11 +36,11 @@ public class DimensionStateHolder : MonoBehaviour
 
     private void ChangeDimension()
     {
-        _currentDimension = 
-            _currentDimension == Dimension.Lava 
+        CurrentDimension = 
+            CurrentDimension == Dimension.Lava 
             ? Dimension.Goofy : Dimension.Lava;
 
-        OnDimensionChanged?.Invoke(this, new OnDimensionChangedEventArgs(_currentDimension));
+        OnDimensionChanged?.Invoke(this, new OnDimensionChangedEventArgs(CurrentDimension));
     }
 
     private void OnDestroy()

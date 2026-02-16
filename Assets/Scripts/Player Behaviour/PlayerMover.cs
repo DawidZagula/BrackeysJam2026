@@ -9,6 +9,15 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private Vector2 _groundCheckSize;
     [SerializeField] private LayerMask _groundLayer;
 
+    private enum JumpOrigin
+    {
+        None,
+        Player,
+        Trampoline
+    }
+
+    private JumpOrigin _currentJumpOrigin = JumpOrigin.None;
+
     // Components
     [SerializeField] private PlayerMovementData _configurationData;
     private Rigidbody2D _rigidbody;
@@ -106,6 +115,8 @@ public class PlayerMover : MonoBehaviour
 
     private void ResetJumpState()
     {
+        _currentJumpOrigin = JumpOrigin.None;
+
         _isJumpCut = false;
         _isJumpFalling = false;
     }
@@ -188,6 +199,8 @@ public class PlayerMover : MonoBehaviour
 
     private void PerformJump()
     {
+        _currentJumpOrigin = JumpOrigin.Player;
+
         ResetJumpTimers();
 
         float jumpForce = _configurationData.jumpForce;
@@ -195,7 +208,6 @@ public class PlayerMover : MonoBehaviour
             jumpForce -= _rigidbody.linearVelocity.y;
 
         _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
     }
 
     private void ResetJumpTimers()
@@ -206,12 +218,30 @@ public class PlayerMover : MonoBehaviour
 
     private bool CanJumpCut()
     {
-        return _isJumping && _rigidbody.linearVelocity.y > 0;
+        return
+            _isJumping
+            && _rigidbody.linearVelocity.y > 0
+            && _currentJumpOrigin == JumpOrigin.Player
+            && _lastOnGroundTime <= 0;
     }
 
     private void OnDestroy()
     {
         UnsubscribeEvents();
+    }
+
+    public void LaunchFromTrampoline(float trampolineVelocity)
+    {
+        _currentJumpOrigin = JumpOrigin.Trampoline;
+
+        _rigidbody.linearVelocity =
+            new Vector2(_rigidbody.linearVelocity.x, trampolineVelocity);
+
+        _isJumping = true;
+        _isJumpCut = false;
+        _isJumpFalling = false;
+
+        ResetJumpTimers();
     }
 
     private void UnsubscribeEvents()
