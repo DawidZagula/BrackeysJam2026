@@ -21,14 +21,14 @@ public class GameOverManager : MonoBehaviour
     
     private void Start()
     {
-        _gameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
+        _gameStateManager.OnStateChanged += OnStateChanged;
 
         AssignButtons();
     }
 
-    private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
+    private void OnStateChanged(GameState gameState)
     {
-        if (e.NewGameState == GameState.GameOver)
+        if (gameState == GameState.GameOver)
         {
             _gameOverScreen.SetActive(true);
         }

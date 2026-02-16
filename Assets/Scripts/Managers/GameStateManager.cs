@@ -2,18 +2,10 @@ using System;
 
 public class GameStateManager
 {
+    public GameState GetCurrentState => _currentState;
     private GameState _currentState;
 
-    public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
-    public class OnStateChangedEventArgs : EventArgs
-    {
-        public GameState NewGameState { get; }
-
-        public OnStateChangedEventArgs(GameState newState)
-        {
-            NewGameState = newState;
-        }
-    }
+    public event Action<GameState> OnStateChanged;
 
     public GameStateManager()
     {
@@ -23,9 +15,6 @@ public class GameStateManager
     public void ChangeCurrentState(GameState newState)
     {
         _currentState = newState;
-        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs(newState));
+        OnStateChanged?.Invoke(newState);
     }
-
-    public GameState GetCurrentState => _currentState;
-
 }

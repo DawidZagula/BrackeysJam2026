@@ -9,7 +9,7 @@ public class TrampolineDimensionObject : BaseDimensionObject
 
     protected override void ProcessTriggeredByPlayer(PlayerMover playerMover)
     {
-        if (DimensionStateHolder.Instance.CurrentDimension != _trampolineActiveDimension)
+        if (_dimensionStateHolder.CurrentDimension != _trampolineActiveDimension)
             return;
 
         float trampolineVelocity = CalculateTrampolineVelocity();

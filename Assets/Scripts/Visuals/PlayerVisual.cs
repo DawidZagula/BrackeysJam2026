@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 public class PlayerVisual : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class PlayerVisual : MonoBehaviour
     // run-time state
     private Coroutine _currentRotationCoroutine;
 
+    private DimensionStateHolder _dimensionStateHolder;
+
+    [Inject]
+    private void Construct(DimensionStateHolder dimensionStateHolder)
+    {
+        _dimensionStateHolder = dimensionStateHolder;
+    }
+    
     private void Awake()
     {
         _playerMover = GetComponentInParent<PlayerMover>();
@@ -20,14 +29,14 @@ public class PlayerVisual : MonoBehaviour
 
     private void Start()
     {
-        DimensionStateHolder.Instance.OnDimensionChanged
+        _dimensionStateHolder.OnDimensionChanged
             += DimensionStateHolder_OnDimensionChanged;
     }
 
-    private void DimensionStateHolder_OnDimensionChanged(object sender, DimensionStateHolder.OnDimensionChangedEventArgs e)
+    private void DimensionStateHolder_OnDimensionChanged(Dimension dimension)
     {
-        float targetZ = (e.newDimension == Dimension.Goofy) ? 180f : 0f;
-        _playerMover.SetUpsideDown(e.newDimension == Dimension.Goofy);
+        float targetZ = (dimension == Dimension.Goofy) ? 180f : 0f;
+        _playerMover.SetUpsideDown(dimension == Dimension.Goofy);
 
         if (_currentRotationCoroutine != null)
             StopCoroutine(_currentRotationCoroutine);
@@ -56,9 +65,9 @@ public class PlayerVisual : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (DimensionStateHolder.Instance != null)
+        if (_dimensionStateHolder != null)
         {
-            DimensionStateHolder.Instance.OnDimensionChanged
+            _dimensionStateHolder.OnDimensionChanged
                 -= DimensionStateHolder_OnDimensionChanged;
         }
     }

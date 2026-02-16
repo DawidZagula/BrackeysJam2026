@@ -23,11 +23,13 @@ public class GroundMover : MonoBehaviour
     private BoxCollider2D _deathAreaCollider;
 
     private GameStateManager _gameStateManager;
+    private DimensionStateHolder _dimensionStateHolder;
     
     [Inject]
-    public void Construct(GameStateManager gameStateManager)
+    public void Construct(GameStateManager gameStateManager, DimensionStateHolder dimensionStateHolder)
     {
         _gameStateManager = gameStateManager;
+        _dimensionStateHolder = dimensionStateHolder;
     }
     
     private void Awake()
@@ -49,23 +51,23 @@ public class GroundMover : MonoBehaviour
         _gameStateManager.OnStateChanged
             += GameStateManager_OnStateChanged;
 
-        DimensionStateHolder.Instance.OnDimensionChanged
+        _dimensionStateHolder.OnDimensionChanged
             += DimensionStateHolder_OnDimensionChanged;
 
         PickupHolder.Instance.OnUsedPickup 
             += PickupHolder_OnUsedPickup;
     }
 
-    private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
+    private void GameStateManager_OnStateChanged(GameState gameState)
     {
-        if (e.NewGameState == GameState.Started)
+        if (gameState == GameState.Started)
         {
             _isMoving = true;
             return;
         }
         _isMoving = false;
     }
-    private void DimensionStateHolder_OnDimensionChanged(object sender, DimensionStateHolder.OnDimensionChangedEventArgs e)
+    private void DimensionStateHolder_OnDimensionChanged(Dimension dimension)
     {
         IncreaseSpeed();
     }
@@ -145,7 +147,7 @@ public class GroundMover : MonoBehaviour
         _gameStateManager.OnStateChanged 
             -= GameStateManager_OnStateChanged;
 
-        DimensionStateHolder.Instance.OnDimensionChanged
+        _dimensionStateHolder.OnDimensionChanged
           -= DimensionStateHolder_OnDimensionChanged;
 
         PickupHolder.Instance.OnUsedPickup

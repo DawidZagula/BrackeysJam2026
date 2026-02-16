@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Zenject;
 
 public class DimensionLevelChanger : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class DimensionLevelChanger : MonoBehaviour
     private Dictionary<Dimension, TilemapRenderer> _dimensionTilemapMap;
     private TilemapRenderer _currentActiveTilemap;
 
+    private DimensionStateHolder _dimensionStateHolder;
+    
+    [Inject]
+    public void Construct(DimensionStateHolder dimensionStateHolder)
+    {
+        _dimensionStateHolder = dimensionStateHolder;
+    }
+    
     private void Awake()
     {
         _dimensionTilemapMap = new Dictionary<Dimension, TilemapRenderer>
@@ -24,14 +33,14 @@ public class DimensionLevelChanger : MonoBehaviour
 
     private void Start()
     {
-        DimensionStateHolder.Instance.OnDimensionChanged += DimensionStateHolder_OnDimensionChanged;
+        _dimensionStateHolder.OnDimensionChanged += DimensionStateHolder_OnDimensionChanged;
 
         _currentActiveTilemap = _lavaDimensionTilemapRenderer;
     }
 
-    private void DimensionStateHolder_OnDimensionChanged(object sender, DimensionStateHolder.OnDimensionChangedEventArgs e)
+    private void DimensionStateHolder_OnDimensionChanged(Dimension dimension)
     {
-        switch (e.newDimension)
+        switch (dimension)
         {
             case Dimension.Lava:
                 UpdateDisplayedTilemap(Dimension.Lava);
@@ -56,7 +65,7 @@ public class DimensionLevelChanger : MonoBehaviour
 
     private void OnDestroy()
     {
-        DimensionStateHolder.Instance.OnDimensionChanged 
+        _dimensionStateHolder.OnDimensionChanged 
             -= DimensionStateHolder_OnDimensionChanged;
     }
 }

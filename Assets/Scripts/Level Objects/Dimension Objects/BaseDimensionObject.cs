@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public abstract class BaseDimensionObject : MonoBehaviour
 {
@@ -19,9 +20,17 @@ public abstract class BaseDimensionObject : MonoBehaviour
     [SerializeField] private Sprite _lavaDimensionVisual;
     [SerializeField] private Sprite _goofyDimensionVisual;
 
+    protected DimensionStateHolder _dimensionStateHolder;
+
+    [Inject]
+    public void Construct(DimensionStateHolder dimensionStateHolder)
+    {
+        _dimensionStateHolder = dimensionStateHolder;
+    }
+    
     private void Start()
     {
-        DimensionStateHolder.Instance.OnDimensionChanged
+        _dimensionStateHolder.OnDimensionChanged
             += DimensionStateHolder_OnDimensionChanged;
 
         ToggleVisual(Dimension.Lava);
@@ -35,16 +44,16 @@ public abstract class BaseDimensionObject : MonoBehaviour
         }
     }
 
-    private void DimensionStateHolder_OnDimensionChanged(object sender, DimensionStateHolder.OnDimensionChangedEventArgs e)
+    private void DimensionStateHolder_OnDimensionChanged(Dimension dimension)
     {
-        ToggleVisual(e.newDimension);
+        ToggleVisual(dimension);
         if (!_isColliderAlwaysActive)
         {
-            ToggleCollider(e.newDimension);
+            ToggleCollider(dimension);
         }
         if (!_isAlwaysTrigger)
         {
-            ToggleTrigger(e.newDimension);
+            ToggleTrigger(dimension);
         }
     }
 
@@ -99,7 +108,7 @@ public abstract class BaseDimensionObject : MonoBehaviour
 
     private void OnDestroy()
     {
-        DimensionStateHolder.Instance.OnDimensionChanged
+        _dimensionStateHolder.OnDimensionChanged
             -= DimensionStateHolder_OnDimensionChanged;
     }
 }

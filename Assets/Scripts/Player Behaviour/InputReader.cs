@@ -25,17 +25,17 @@ public class InputReader
         _playerInputActions.Player.Enable();
         SubscribeGameplayInputEvents();
         _gameStateManager = gameStateManager;
-        _gameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
+        _gameStateManager.OnStateChanged += OnStateChanged;
     }
 
-    private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
+    private void OnStateChanged(GameState gameState)
     {
-        if (e.NewGameState == GameState.Started)
+        if (gameState == GameState.Started)
         {
             SubscribeGameplayInputEvents();
             return;
         }
-        else if (e.NewGameState == GameState.GameOver)
+        else if (gameState == GameState.GameOver)
         {
             UnsubscribeGameplayInputEvents();
         }

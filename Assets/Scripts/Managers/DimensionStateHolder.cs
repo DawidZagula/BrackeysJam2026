@@ -1,23 +1,24 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Zenject;
 
-public class DimensionStateHolder : MonoBehaviour
+public class DimensionStateHolder
 {
-    public static DimensionStateHolder Instance { get; private set; }
+    private Dimension _dimension;
     
-    public Dimension CurrentDimension { get; private set; }
-
-    public event EventHandler<OnDimensionChangedEventArgs> OnDimensionChanged;
-    public class OnDimensionChangedEventArgs : EventArgs
+    public Dimension CurrentDimension
     {
-        public Dimension newDimension { get; }
-
-        public OnDimensionChangedEventArgs(Dimension newDimension)
+        get => _dimension;
+        private set
         {
-            this.newDimension = newDimension;
-        }
+            if (_dimension == value) return;
+            _dimension = value;
+            OnDimensionChanged?.Invoke(_dimension);
+        } 
     }
+  
+    public event Action<Dimension> OnDimensionChanged;
     
     private InputReader _inputReader;
 
@@ -25,20 +26,11 @@ public class DimensionStateHolder : MonoBehaviour
     public void Construct(InputReader inputReader)
     {
         _inputReader = inputReader;
-    }
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-    private void Start()
-    {
         _inputReader.OnDimensionChangePressed 
-            += InputReader_OnDimensionChangePressed;
+            += OnDimensionChangePressed;
     }
 
-    private void InputReader_OnDimensionChangePressed(object sender, System.EventArgs e)
+    private void OnDimensionChangePressed(object sender, System.EventArgs e)
     {
         ChangeDimension();
     }
@@ -49,12 +41,12 @@ public class DimensionStateHolder : MonoBehaviour
             CurrentDimension == Dimension.Lava 
             ? Dimension.Goofy : Dimension.Lava;
 
-        OnDimensionChanged?.Invoke(this, new OnDimensionChangedEventArgs(CurrentDimension));
+        OnDimensionChanged?.Invoke(CurrentDimension);
     }
 
     private void OnDestroy()
     {
         _inputReader.OnDimensionChangePressed 
-            -= InputReader_OnDimensionChangePressed;
+            -= OnDimensionChangePressed;
     }
 }

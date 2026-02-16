@@ -1,10 +1,19 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class GravityChanger : MonoBehaviour
 {
    public static GravityChanger Instance { get; private set; }
+   
+   private DimensionStateHolder _dimensionStateHolder;
 
+   [Inject]
+   public void Construct(DimensionStateHolder dimensionStateHolder)
+   {
+       _dimensionStateHolder = dimensionStateHolder;
+   }
+   
     private void Awake()
     {
         Instance = this;
@@ -12,18 +21,18 @@ public class GravityChanger : MonoBehaviour
 
     private void Start()
     {
-        DimensionStateHolder.Instance.OnDimensionChanged 
+        _dimensionStateHolder.OnDimensionChanged 
             += DimensionStateHolder_OnDimensionChanged;
     }
 
-    private void DimensionStateHolder_OnDimensionChanged(object sender, DimensionStateHolder.OnDimensionChangedEventArgs e)
+    private void DimensionStateHolder_OnDimensionChanged(Dimension dimension)
     {
-        ChangeGravity(e.newDimension);
+        ChangeGravity(dimension);
     }
 
     private void OnDestroy()
     {
-        DimensionStateHolder.Instance.OnDimensionChanged
+        _dimensionStateHolder.OnDimensionChanged
             -= DimensionStateHolder_OnDimensionChanged;
     }
 
