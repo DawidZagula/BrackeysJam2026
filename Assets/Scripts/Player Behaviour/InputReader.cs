@@ -1,14 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
-public class InputReader : MonoBehaviour
+public class InputReader
 {
-    public static InputReader Instance { get; private set; }
-
     private PlayerInputActions _playerInputActions;
-
-
+    
     public event EventHandler<MoveEventArgs> OnMove;
     public class MoveEventArgs : EventArgs { public float MoveInput { get; set; } }
 
@@ -19,21 +17,15 @@ public class InputReader : MonoBehaviour
 
     public event EventHandler OnTryUsePickup;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-    private void OnEnable()
+    private readonly GameStateManager _gameStateManager;
+    
+    public InputReader(GameStateManager gameStateManager)
     {
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
-
-    }
-
-    private void Start()
-    {
-        GameStateManager.Instance.OnStateChanged += GameStateManager_OnStateChanged;
+        SubscribeGameplayInputEvents();
+        _gameStateManager = gameStateManager;
+        _gameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
     }
 
     private void GameStateManager_OnStateChanged(object sender, GameStateManager.OnStateChangedEventArgs e)
