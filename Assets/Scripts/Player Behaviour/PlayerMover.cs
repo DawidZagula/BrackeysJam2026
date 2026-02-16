@@ -28,6 +28,7 @@ public class PlayerMover : MonoBehaviour
     private bool _isJumping;
     private bool _isJumpCut;
     private bool _isJumpFalling;
+    private bool _isUpsideDown;
 
     // Timers
     private float _lastOnGroundTime;
@@ -59,6 +60,7 @@ public class PlayerMover : MonoBehaviour
         InputReader.Instance.OnMove += InputReader_OnMove;
         InputReader.Instance.OnJumpPressed += InputReader_OnJumpPressed;
         InputReader.Instance.OnJumpReleased += InputReader_OnJumpReleased;
+
     }
 
     private void InputReader_OnMove(object sender, InputReader.MoveEventArgs e)
@@ -169,9 +171,14 @@ public class PlayerMover : MonoBehaviour
     private void UpdateFaceDirection()
     {
 
-        if (_moveInput.x > 0 && !_isFacingRight
+        if (!_isUpsideDown && (_moveInput.x > 0 && !_isFacingRight
             ||
             _moveInput.x < 0 && _isFacingRight)
+            || _isUpsideDown &&
+             (_moveInput.x > 0 && _isFacingRight
+            ||
+            _moveInput.x < 0 && !_isFacingRight)
+            )
         {
             Turn();
         }
@@ -229,6 +236,8 @@ public class PlayerMover : MonoBehaviour
     {
         UnsubscribeEvents();
     }
+
+    public void SetUpsideDown(bool newState) => _isUpsideDown = newState;
 
     public void LaunchFromTrampoline(float trampolineVelocity)
     {

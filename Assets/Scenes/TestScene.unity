@@ -199,11 +199,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1411029901923707961, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
   m_PrefabInstance: {fileID: 6392904295441529608}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &355791365 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5193251379245481106, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
-  m_PrefabInstance: {fileID: 956238493005995716}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &431630646 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4417770351032061869, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
@@ -661,11 +656,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &1489057241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1489057243}
+  - component: {fileID: 1489057242}
+  m_Layer: 0
+  m_Name: GravityChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1489057242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489057241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a85701aa09c3945b540da4b1d1c000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GravityChanger
+--- !u!4 &1489057243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489057241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -33.03777, y: 1.13656, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1560170530 stripped
 TilemapRenderer:
   m_CorrespondingSourceObject: {fileID: 3129729411019343345, guid: f7f1b6f3bc1d2cf428ab51c3d49ca42d, type: 3}
   m_PrefabInstance: {fileID: 4350299749337124358}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1708882426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4258650531011139357, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
+  m_PrefabInstance: {fileID: 956238493005995716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1708882429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708882426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44424e13a5b070479694623ca40919d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual
+  _turnSpeed: 5
 --- !u!114 &1846269796 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1707142552742106041, guid: 5b978d21b00db364f89322dd46ac61b5, type: 3}
@@ -843,6 +900,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1102859647664755082, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102859647664755082, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5193251379245481106, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -891,28 +956,15 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5193251379245481106, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 956238493005995725}
+    - targetCorrespondingSourceObject: {fileID: 4258650531011139357, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1708882429}
   m_SourcePrefab: {fileID: 100100000, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
 --- !u!4 &956238493005995717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7905185034747081707, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
   m_PrefabInstance: {fileID: 956238493005995716}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &956238493005995725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355791365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bee31b1412cb73449a14887e6c582a2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KnockbackReceiver
-  <IsBeingKnockedBack>k__BackingField: 0
 --- !u!1001 &1028333910822449549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4158,6 +4210,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 7833583663743875162, guid: f7f1b6f3bc1d2cf428ab51c3d49ca42d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4287,7 +4343,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1707142552742106041, guid: 5b978d21b00db364f89322dd46ac61b5, type: 3}
       propertyPath: _minSpeed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1707142552742106041, guid: 5b978d21b00db364f89322dd46ac61b5, type: 3}
       propertyPath: _currentMoveSpeed
@@ -4918,3 +4974,4 @@ SceneRoots:
   - {fileID: 321811908997995071}
   - {fileID: 1099403790393373821}
   - {fileID: 3582007883876432951}
+  - {fileID: 1489057243}
