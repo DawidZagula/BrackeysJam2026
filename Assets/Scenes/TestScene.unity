@@ -119,24 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &215231449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4258650531011139357, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
-  m_PrefabInstance: {fileID: 956238493005995716}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &215231452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215231449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b44424e13a5b070479694623ca40919d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual
-  _turnSpeed: 5
 --- !u!1 &352914886 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1411029901923707961, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
@@ -829,14 +811,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1102859647664755082, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1102859647664755082, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5193251379245481106, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -884,10 +858,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4258650531011139357, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 215231452}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
 --- !u!4 &956238493005995717 stripped
 Transform:
