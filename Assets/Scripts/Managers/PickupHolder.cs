@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class PickupHolder : MonoBehaviour
 {
@@ -15,6 +16,14 @@ public class PickupHolder : MonoBehaviour
     public event EventHandler OnUsedPickup;
     public event EventHandler OnAddedPickup;
 
+    private InputReader _inputReader;
+
+    [Inject]
+    public void Construct(InputReader inputReader)
+    {
+        _inputReader = inputReader;
+    }
+    
     private void Awake()
     {
         Instance = this;
@@ -24,7 +33,7 @@ public class PickupHolder : MonoBehaviour
 
     private void Start()
     {
-        InputReader.Instance.OnTryUsePickup += InputReader_OnTryUsePickup;
+        _inputReader.OnTryUsePickup += InputReader_OnTryUsePickup;
     }
 
     private void InputReader_OnTryUsePickup(object sender, System.EventArgs e)
@@ -52,6 +61,6 @@ public class PickupHolder : MonoBehaviour
     }
     private void OnDestroy()
     {
-        InputReader.Instance.OnTryUsePickup -= InputReader_OnTryUsePickup;
+        _inputReader.OnTryUsePickup -= InputReader_OnTryUsePickup;
     }
 }

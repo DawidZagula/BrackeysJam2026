@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class DimensionStateHolder : MonoBehaviour
 {
@@ -17,6 +18,14 @@ public class DimensionStateHolder : MonoBehaviour
             this.newDimension = newDimension;
         }
     }
+    
+    private InputReader _inputReader;
+
+    [Inject]
+    public void Construct(InputReader inputReader)
+    {
+        _inputReader = inputReader;
+    }
 
     private void Awake()
     {
@@ -25,7 +34,7 @@ public class DimensionStateHolder : MonoBehaviour
 
     private void Start()
     {
-        InputReader.Instance.OnDimensionChangePressed 
+        _inputReader.OnDimensionChangePressed 
             += InputReader_OnDimensionChangePressed;
     }
 
@@ -45,7 +54,7 @@ public class DimensionStateHolder : MonoBehaviour
 
     private void OnDestroy()
     {
-        InputReader.Instance.OnDimensionChangePressed 
+        _inputReader.OnDimensionChangePressed 
             -= InputReader_OnDimensionChangePressed;
     }
 }

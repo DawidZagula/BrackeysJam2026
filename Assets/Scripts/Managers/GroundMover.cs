@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class GroundMover : MonoBehaviour
 {
@@ -21,6 +22,14 @@ public class GroundMover : MonoBehaviour
     //Components
     private BoxCollider2D _deathAreaCollider;
 
+    private GameStateManager _gameStateManager;
+    
+    [Inject]
+    public void Construct(GameStateManager gameStateManager)
+    {
+        _gameStateManager = gameStateManager;
+    }
+    
     private void Awake()
     {
         _deathAreaCollider = GetComponent<BoxCollider2D>();
@@ -37,7 +46,7 @@ public class GroundMover : MonoBehaviour
 
     private void SubscribeEvents()
     {
-        GameStateManager.Instance.OnStateChanged
+        _gameStateManager.OnStateChanged
             += GameStateManager_OnStateChanged;
 
         DimensionStateHolder.Instance.OnDimensionChanged
@@ -133,7 +142,7 @@ public class GroundMover : MonoBehaviour
 
     private void UnsubscribeEvents()
     {
-        GameStateManager.Instance.OnStateChanged 
+        _gameStateManager.OnStateChanged 
             -= GameStateManager_OnStateChanged;
 
         DimensionStateHolder.Instance.OnDimensionChanged

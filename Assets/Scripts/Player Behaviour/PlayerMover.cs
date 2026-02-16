@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 public class PlayerMover : MonoBehaviour
 {
@@ -35,7 +36,15 @@ public class PlayerMover : MonoBehaviour
 
     // Input Parameters
     private Vector2 _moveInput;
+    
+    private InputReader _inputReader;
 
+    [Inject]
+    public void Construct(InputReader inputReader)
+    {
+        _inputReader = inputReader;
+    }
+    
     private void Awake()
     {
         SetInitialState();
@@ -56,9 +65,9 @@ public class PlayerMover : MonoBehaviour
 
     private void SubscribeEvents()
     {
-        InputReader.Instance.OnMove += InputReader_OnMove;
-        InputReader.Instance.OnJumpPressed += InputReader_OnJumpPressed;
-        InputReader.Instance.OnJumpReleased += InputReader_OnJumpReleased;
+        _inputReader.OnMove += InputReader_OnMove;
+        _inputReader.OnJumpPressed += InputReader_OnJumpPressed;
+        _inputReader.OnJumpReleased += InputReader_OnJumpReleased;
     }
 
     private void InputReader_OnMove(object sender, InputReader.MoveEventArgs e)
@@ -246,9 +255,9 @@ public class PlayerMover : MonoBehaviour
 
     private void UnsubscribeEvents()
     {
-        InputReader.Instance.OnMove -= InputReader_OnMove;
-        InputReader.Instance.OnJumpPressed -= InputReader_OnJumpPressed;
-        InputReader.Instance.OnJumpReleased -= InputReader_OnJumpReleased;
+        _inputReader.OnMove -= InputReader_OnMove;
+        _inputReader.OnJumpPressed -= InputReader_OnJumpPressed;
+        _inputReader.OnJumpReleased -= InputReader_OnJumpReleased;
     }
 
     private void OnDrawGizmosSelected()

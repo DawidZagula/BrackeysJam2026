@@ -1,12 +1,8 @@
 using System;
-using UnityEngine;
 
-public class GameStateManager : MonoBehaviour
+public class GameStateManager
 {
-    public static GameStateManager Instance { get; private set; }
-
-    [Header("For debugging only")]
-    [SerializeField] private GameState _currentState;
+    private GameState _currentState;
 
     public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
     public class OnStateChangedEventArgs : EventArgs
@@ -19,10 +15,8 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    public GameStateManager()
     {
-        Instance = this;
-
         ChangeCurrentState(GameState.NotStarted);
     }
 
@@ -32,6 +26,6 @@ public class GameStateManager : MonoBehaviour
         OnStateChanged?.Invoke(this, new OnStateChangedEventArgs(newState));
     }
 
-    public GameState GetCurrentState() => _currentState;
+    public GameState GetCurrentState => _currentState;
 
 }

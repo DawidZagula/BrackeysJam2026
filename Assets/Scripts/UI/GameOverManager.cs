@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Zenject;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -10,9 +11,17 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private Button _retryButton;
     [SerializeField] private Button _backToMainMenuButton;
 
+    private GameStateManager _gameStateManager;
+    
+    [Inject]
+    public void Construct(GameStateManager gameStateManager)
+    {
+        _gameStateManager = gameStateManager;
+    }
+    
     private void Start()
     {
-        GameStateManager.Instance.OnStateChanged += GameStateManager_OnStateChanged;
+        _gameStateManager.OnStateChanged += GameStateManager_OnStateChanged;
 
         AssignButtons();
     }

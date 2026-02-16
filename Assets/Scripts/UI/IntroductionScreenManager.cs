@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class IntroductionScreenManager : MonoBehaviour
 {
@@ -7,6 +8,14 @@ public class IntroductionScreenManager : MonoBehaviour
     [SerializeField] private GameObject _IntroductionScreen;
     [SerializeField] private Button _startButton;
 
+    private GameStateManager _gameStateManager;
+
+    [Inject]
+    public void Construct(GameStateManager gameStateManager)
+    {
+        _gameStateManager = gameStateManager;
+    }
+    
     private void Start()
     {
         AssignButton();
@@ -17,7 +26,7 @@ public class IntroductionScreenManager : MonoBehaviour
         _startButton.onClick.AddListener(() =>
         {
             _IntroductionScreen.SetActive(false);
-            GameStateManager.Instance.ChangeCurrentState(GameState.Started);
+            _gameStateManager.ChangeCurrentState(GameState.Started);
         });
     }
 }
