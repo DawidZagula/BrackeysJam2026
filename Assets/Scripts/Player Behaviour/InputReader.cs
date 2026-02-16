@@ -23,7 +23,6 @@ public class InputReader
     {
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
-        SubscribeGameplayInputEvents();
         _gameStateManager = gameStateManager;
         _gameStateManager.OnStateChanged += OnStateChanged;
     }
