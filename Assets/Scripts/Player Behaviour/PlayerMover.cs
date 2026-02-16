@@ -4,29 +4,28 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
 
-    [SerializeField] private PlayerMovementData _configurationData;
-
-    [Header("Components")]
-    private Rigidbody2D _rigidbody;
-
-    [Header("State Parameters")]
-    private bool _isFacingRight;
-    private bool _isJumping;
-    private bool _isJumpCut;
-    private bool _isJumpFalling;
-
-    [Header("Timers")]
-    private float _lastOnGroundTime;
-    private float _lastPressedJumpTime;
-
-    [Header("Input Parameters")]
-    private Vector2 _moveInput;
-
     [Header("Environment Checks")]
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private Vector2 _groundCheckSize;
     [SerializeField] private LayerMask _groundLayer;
 
+    // Components
+    [SerializeField] private PlayerMovementData _configurationData;
+    private Rigidbody2D _rigidbody;
+    private KnockbackReceiver _knockbackReceiver;
+
+    // State Parameters
+    private bool _isFacingRight;
+    private bool _isJumping;
+    private bool _isJumpCut;
+    private bool _isJumpFalling;
+
+    // Timers
+    private float _lastOnGroundTime;
+    private float _lastPressedJumpTime;
+
+    // Input Parameters
+    private Vector2 _moveInput;
 
     private void Awake()
     {
@@ -36,6 +35,7 @@ public class PlayerMover : MonoBehaviour
     private void SetInitialState()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _knockbackReceiver = GetComponent<KnockbackReceiver>();
         SetGravityScale(_configurationData.gravityScale);
         _isFacingRight = true;
     }
@@ -64,6 +64,8 @@ public class PlayerMover : MonoBehaviour
 
     private void InputReader_OnJumpReleased(object sender, System.EventArgs e)
     {
+        if (_knockbackReceiver.IsBeingKnockedBack) { return; }
+
         if (CanJumpCut())
             _isJumpCut = true;
     }
@@ -137,6 +139,8 @@ public class PlayerMover : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_knockbackReceiver.IsBeingKnockedBack) { return; }
+
         if (_moveInput.x != 0)
         {
             UpdateFaceDirection();

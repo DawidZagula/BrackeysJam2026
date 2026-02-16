@@ -15,5 +15,6 @@ public enum GameState
 public enum Dimension
 {
     Lava,
-    Goofy
+    Goofy,
+    None
 }

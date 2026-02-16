@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DimensionObject : MonoBehaviour
+public abstract class BaseDimensionObject : MonoBehaviour
 {
     [Header("Configuration")]
     [SerializeField] private Dimension _visibilityDimension;
@@ -83,9 +83,16 @@ public class DimensionObject : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out PlayerMover playerMover))
         {
-            Debug.Log("PlayerTriggers");
+            ProcessTriggeredByPlayer(playerMover);
         }
     }
+    protected abstract void ProcessTriggeredByPlayer(PlayerMover playerMover);
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //If we decide to have some SFX/ VFX or other logic on collision
+    }
+
 
     private void OnDestroy()
     {

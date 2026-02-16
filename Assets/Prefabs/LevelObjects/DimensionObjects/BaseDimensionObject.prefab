@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3021289826036484241}
   - component: {fileID: 3409889855520841780}
   m_Layer: 0
-  m_Name: DimensionObject
+  m_Name: BaseDimensionObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DimensionObject
   _visibilityDimension: 0
+  _isColliderAlwaysActive: 0
   _colliderActiveDimension: 0
+  _isAlwaysTrigger: 0
+  _triggerDimension: 0
   _visualRenderer: {fileID: 7310669125993118761}
   _collider: {fileID: 3409889855520841780}
   _hasDifferentVisuals: 0
