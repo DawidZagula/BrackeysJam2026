@@ -124,6 +124,8 @@ public class GroundMover : MonoBehaviour
         _currentMoveSpeed = Mathf.Max(_currentMoveSpeed, _minSpeed);
     }
 
+    public float GetDeathAreaHeight() => _deathAreaHeight;
+
     private void OnDestroy()
     {
         UnsubscribeEvents();
