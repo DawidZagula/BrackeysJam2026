@@ -13,6 +13,7 @@ public class PickupHolder : MonoBehaviour
     public int CurrentPickupCount { get; private set; }
 
     public event EventHandler OnUsedPickup;
+    public event EventHandler OnAddedPickup;
 
     private void Awake()
     {
@@ -40,6 +41,15 @@ public class PickupHolder : MonoBehaviour
         }
     }
 
+    public void AddPickup()
+    {
+        if (CurrentPickupCount >= _maxPickupCount)
+            return;
+
+        CurrentPickupCount++;
+
+        OnAddedPickup?.Invoke(this, EventArgs.Empty);
+    }
     private void OnDestroy()
     {
         InputReader.Instance.OnTryUsePickup -= InputReader_OnTryUsePickup;
