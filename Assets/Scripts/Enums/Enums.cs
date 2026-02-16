@@ -11,3 +11,11 @@ public enum Dimension
     Goofy,
     None
 }
+
+public enum GameScene
+{
+    MainMenu,
+    Level_1,
+    Level_2,
+    Level_3
+}
