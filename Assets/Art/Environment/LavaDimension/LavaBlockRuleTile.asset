@@ -90,16 +90,15 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 4
     m_Sprites:
-    - {fileID: -1562926665, guid: 38863a60e7410444fa90583a838e7855, type: 3}
+    - {fileID: 438539853, guid: 53101573007f8d042b092300f57ac9a0, type: 3}
     - {fileID: 2063800262, guid: 38863a60e7410444fa90583a838e7855, type: 3}
     - {fileID: 1085258005, guid: 38863a60e7410444fa90583a838e7855, type: 3}
     - {fileID: -2127529881, guid: 38863a60e7410444fa90583a838e7855, type: 3}
     - {fileID: -1163986, guid: 38863a60e7410444fa90583a838e7855, type: 3}
-    - {fileID: 438539853, guid: 53101573007f8d042b092300f57ac9a0, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
-    m_PerlinScale: 0.7
+    m_PerlinScale: 0.53
     m_Output: 1
     m_ColliderType: 1
     m_RandomTransform: 5
