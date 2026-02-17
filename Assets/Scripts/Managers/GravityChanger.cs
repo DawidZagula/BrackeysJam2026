@@ -4,24 +4,29 @@ using Zenject;
 
 public class GravityChanger : MonoBehaviour
 {
-   public static GravityChanger Instance { get; private set; }
-   
-   private DimensionStateHolder _dimensionStateHolder;
+    public static GravityChanger Instance { get; private set; }
 
-   [Inject]
-   public void Construct(DimensionStateHolder dimensionStateHolder)
-   {
-       _dimensionStateHolder = dimensionStateHolder;
-   }
-   
+    private DimensionStateHolder _dimensionStateHolder;
+
+    private Vector2 _defaultGravityValue;
+
+    [Inject]
+    public void Construct(DimensionStateHolder dimensionStateHolder)
+    {
+        _dimensionStateHolder = dimensionStateHolder;
+    }
+
     private void Awake()
     {
         Instance = this;
+
+        _defaultGravityValue = Physics2D.gravity;
     }
+
 
     private void Start()
     {
-        _dimensionStateHolder.OnDimensionChanged 
+        _dimensionStateHolder.OnDimensionChanged
             += DimensionStateHolder_OnDimensionChanged;
     }
 
@@ -32,6 +37,8 @@ public class GravityChanger : MonoBehaviour
 
     private void OnDestroy()
     {
+        Physics2D.gravity = _defaultGravityValue;
+
         _dimensionStateHolder.OnDimensionChanged
             -= DimensionStateHolder_OnDimensionChanged;
     }

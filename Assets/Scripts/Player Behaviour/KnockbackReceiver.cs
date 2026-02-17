@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class KnockbackReceiver : MonoBehaviour
 {
+    public static KnockbackReceiver Instance { get; private set; }
+
     // components
     private Rigidbody2D _rigidbody;
 
@@ -12,8 +15,12 @@ public class KnockbackReceiver : MonoBehaviour
     //Property
     [field: SerializeField] public bool IsBeingKnockedBack { get; private set; }
 
+    public Action OnKnockedBack;
+
     private void Awake()
     {
+        Instance = this;
+
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -49,5 +56,7 @@ public class KnockbackReceiver : MonoBehaviour
 
         _rigidbody.linearVelocity = Vector2.zero;
         IsBeingKnockedBack = false;
+
+        OnKnockedBack?.Invoke();
     }
 }

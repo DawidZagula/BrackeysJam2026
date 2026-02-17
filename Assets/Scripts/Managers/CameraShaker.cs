@@ -27,6 +27,8 @@ public class CameraShaker : MonoBehaviour
     {
         _dimensionStateHolder.OnDimensionChanged 
             += DimensionStateHolder_OnDimensionChanged;
+
+        KnockbackReceiver.Instance.OnKnockedBack += ShakeCamera;
     }
 
     private void DimensionStateHolder_OnDimensionChanged(Dimension obj)

@@ -20,7 +20,10 @@ public class FadeTransitionManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(FadeInNextFrame());      
+        if (_shouldFadeInAtSceneLoad)
+        {
+            StartCoroutine(FadeInNextFrame());      
+        }
     }
 
     private IEnumerator FadeInNextFrame()
