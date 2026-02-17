@@ -44,7 +44,7 @@ public class GameOverManager : MonoBehaviour
 
         _backToMainMenuButton.onClick.AddListener(() =>
         {
-            // No main menu yet
+            //
         });
     }
 }

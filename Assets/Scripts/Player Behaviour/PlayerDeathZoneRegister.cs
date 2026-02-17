@@ -13,8 +13,7 @@ public class PlayerDeathZoneRegister : MonoBehaviour
     
     public void ProceedDeath()
     {
-        //TO IMPLEMENT: Transition
-        _gameStateManager.ChangeCurrentState(GameState.GameOver);
+        SceneLoader.ReloadScene();
     }
 
 
