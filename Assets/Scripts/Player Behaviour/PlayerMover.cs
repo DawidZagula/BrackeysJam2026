@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class PlayerMover : MonoBehaviour
 {
-
     [Header("Environment Checks")]
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private Vector2 _groundCheckSize;
@@ -43,6 +43,9 @@ public class PlayerMover : MonoBehaviour
     
     private InputReader _inputReader;
 
+    //Gravity Ability
+    public bool HasGravityReverseAbility { get; set; } = true;
+
     [Inject]
     public void Construct(InputReader inputReader)
     {
@@ -56,6 +59,11 @@ public class PlayerMover : MonoBehaviour
 
     private void SetInitialState()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            HasGravityReverseAbility = false;
+        }
+        
         _rigidbody = GetComponent<Rigidbody2D>();
         _knockbackReceiver = GetComponent<KnockbackReceiver>();
         SetGravityScale(_configurationData.gravityScale);
