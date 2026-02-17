@@ -21,7 +21,7 @@ public class DimensionStateHolder : IDisposable
     public event Action<Dimension> OnDimensionChanged;
     
     private InputReader _inputReader;
-
+    
     [Inject]
     public void Construct(InputReader inputReader)
     {
@@ -34,7 +34,7 @@ public class DimensionStateHolder : IDisposable
     {
         ChangeDimension();
     }
-
+    
     public void ChangeDimension()
     {
         CurrentDimension = 
