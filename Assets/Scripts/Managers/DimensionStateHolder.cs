@@ -35,7 +35,7 @@ public class DimensionStateHolder : IDisposable
         ChangeDimension();
     }
 
-    private void ChangeDimension()
+    public void ChangeDimension()
     {
         CurrentDimension = 
             CurrentDimension == Dimension.Lava 

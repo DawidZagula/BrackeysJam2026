@@ -22,7 +22,7 @@ public class FadeTransitionManager : MonoBehaviour
     {
         if (_shouldFadeInAtSceneLoad)
         {
-            StartCoroutine(FadeInNextFrame());      
+            StartCoroutine(FadeInNextFrame());   
         }
     }
 

@@ -38,9 +38,14 @@ public abstract class BaseDimensionObject : MonoBehaviour
         {
             ToggleCollider(Dimension.Lava);
         }
+
         if (!_isAlwaysTrigger)
         {
             ToggleTrigger(Dimension.Lava);
+        }
+        else
+        {
+            _collider.isTrigger = true;
         }
     }
 

@@ -15,6 +15,7 @@ public class KnockbackDimensionObject : BaseDimensionObject
         if (playerMover.TryGetComponent(out KnockbackReceiver receiver))
         {
             _knockbackApplier.ApplyKnockback(receiver);
+
             return;
         }
     }
