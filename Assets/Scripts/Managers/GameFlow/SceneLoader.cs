@@ -25,6 +25,13 @@ public class SceneLoader
         }
     }
 
+    public static void ReloadScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        FadeTransitionManager.Instance.FadeOut(() => LoadScene(currentSceneIndex));
+    }
+
     private static void LoadScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
