@@ -5,6 +5,6 @@ public class SceneInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<InputReader>().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<InputReader>().AsSingle().NonLazy();
     }
 }
