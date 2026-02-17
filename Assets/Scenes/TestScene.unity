@@ -1357,14 +1357,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8723759745259743812, guid: c7437d6b3240f7f47967df3e45602c93, type: 3}
-      propertyPath: _maxPickupCount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8723759745259743812, guid: c7437d6b3240f7f47967df3e45602c93, type: 3}
-      propertyPath: _startPickupCount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8972255925756390903, guid: c7437d6b3240f7f47967df3e45602c93, type: 3}
       propertyPath: m_Name
       value: PickupHolder
@@ -8826,7 +8818,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1707142552742106041, guid: 5b978d21b00db364f89322dd46ac61b5, type: 3}
       propertyPath: _minSpeed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5737652743393283047, guid: 5b978d21b00db364f89322dd46ac61b5, type: 3}
       propertyPath: m_Name
@@ -9076,6 +9068,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1693095109769112255, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2796133135573836616, guid: fa79decff9e510647ad8cbf52ac20726, type: 3}
     - target: {fileID: 3105745280315881648, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9160,6 +9156,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4283236571472626069, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
+      propertyPath: _lavaSprite
+      value: 
+      objectReference: {fileID: 2796133135573836616, guid: fa79decff9e510647ad8cbf52ac20726, type: 3}
+    - target: {fileID: 4283236571472626069, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
+      propertyPath: _pickupIcon
+      value: 
+      objectReference: {fileID: 6392904295441529609}
+    - target: {fileID: 4283236571472626069, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
+      propertyPath: _goofySprite
+      value: 
+      objectReference: {fileID: 5362735838549604449, guid: 75c25cd9f853163498cd9620cd3e55e5, type: 3}
     - target: {fileID: 5159492961114125694, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -9173,6 +9181,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
+--- !u!114 &6392904295441529609 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1693095109769112255, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
+  m_PrefabInstance: {fileID: 6392904295441529608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &6779299918102962698
 PrefabInstance:
   m_ObjectHideFlags: 0

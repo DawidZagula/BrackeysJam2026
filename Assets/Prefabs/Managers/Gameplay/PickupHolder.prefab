@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be3bc61b5b5c9f49bcca91e41559700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupHolder
-  _maxPickupCount: 88
-  _startPickupCount: 76
+  _maxPickupCount: 5
+  _startPickupCount: 0
