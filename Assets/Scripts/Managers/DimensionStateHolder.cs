@@ -23,18 +23,16 @@ public class DimensionStateHolder
     private InputReader _inputReader;
     
 
-    private void OnDimensionChangePressed(object sender, System.EventArgs e)
-    {
-        ChangeDimension();
-    }
+    //private void OnDimensionChangePressed(object sender, System.EventArgs e)
+    //{
+    //    ChangeDimension();
+    //}
     
     public void ChangeDimension()
     {
         CurrentDimension = 
             CurrentDimension == Dimension.Lava 
             ? Dimension.Goofy : Dimension.Lava;
-
-        Debug.Log("Changing dimension");
     }
 
 }

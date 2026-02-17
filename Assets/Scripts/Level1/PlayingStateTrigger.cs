@@ -11,9 +11,19 @@ public class PlayingStateTrigger : MonoBehaviour
         _gameStateManager = gameStateManager;
     }
 
+    private void Start()
+    {
+        //For debugging
+        _gameStateManager.ChangeCurrentState(GameState.Started);
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Starting Game");
-        _gameStateManager.ChangeCurrentState(GameState.Started);
+        if (_gameStateManager.GetCurrentState != GameState.Started)
+        {
+            _gameStateManager.ChangeCurrentState(GameState.Started);
+            Debug.Log("Starting Game");
+        }
     }
 }
