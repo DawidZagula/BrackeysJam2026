@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-public class InputReader
+public class InputReader : IDisposable
 {
     private PlayerInputActions _playerInputActions;
     
@@ -112,4 +112,16 @@ public class InputReader
         _playerInputActions.Player.Disable();
     }
 
+    public void Dispose()
+    {
+        Debug.Log("Dispose called");
+
+        _playerInputActions.Player.Move.started -= Move_started;
+        _playerInputActions.Player.Move.canceled -= Move_canceled;
+
+        _playerInputActions.Player.Jump.started -= Jump_started;
+        _playerInputActions.Player.Jump.canceled -= Jump_canceled;
+
+        _playerInputActions.Player.Disable();
+    }
 }
