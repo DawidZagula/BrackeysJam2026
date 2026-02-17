@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Zenject;
 
-public class DimensionStateHolder : IDisposable
+public class DimensionStateHolder
 {
     private Dimension _dimension;
     
@@ -22,13 +22,6 @@ public class DimensionStateHolder : IDisposable
     
     private InputReader _inputReader;
     
-    [Inject]
-    public void Construct(InputReader inputReader)
-    {
-        _inputReader = inputReader;
-        _inputReader.OnDimensionChangePressed 
-            += OnDimensionChangePressed;
-    }
 
     private void OnDimensionChangePressed(object sender, System.EventArgs e)
     {
@@ -40,11 +33,8 @@ public class DimensionStateHolder : IDisposable
         CurrentDimension = 
             CurrentDimension == Dimension.Lava 
             ? Dimension.Goofy : Dimension.Lava;
+
+        Debug.Log("Changing dimension");
     }
 
-    public void Dispose()
-    {
-        _inputReader.OnDimensionChangePressed
-             -= OnDimensionChangePressed;
-    }
 }

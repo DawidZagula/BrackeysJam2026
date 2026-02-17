@@ -953,6 +953,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5193251379245481106, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
       insertIndex: 1
+      addedObject: {fileID: 956238493005995729}
+    - targetCorrespondingSourceObject: {fileID: 5193251379245481106, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
+      insertIndex: 2
       addedObject: {fileID: 956238493005995723}
   m_SourcePrefab: {fileID: 100100000, guid: 5de3de48920bb9f4fbdfb83d89bcf2a7, type: 3}
 --- !u!4 &956238493005995717 stripped
@@ -973,6 +976,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   _maxHealth: 1
+--- !u!114 &956238493005995729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098775403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8e6ac243aa13245862d62cb64622c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  _isGravityChangeAvailable: 1
 --- !u!1001 &1154535016594044087
 PrefabInstance:
   m_ObjectHideFlags: 0

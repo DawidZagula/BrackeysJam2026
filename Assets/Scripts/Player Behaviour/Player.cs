@@ -4,31 +4,34 @@ using Zenject;
 
 public class Player : MonoBehaviour
 {
-    
+    [SerializeField] private bool _isGravityChangeAvailable;
+
     private InputReader _inputReader;
-
-    [SerializeField] private bool _isGravityAvailable = false;
-
-    public event Action OnDimensionChange;
+    private DimensionStateHolder _dimensionStateHolder;
 
     [Inject]
-    public void Construct(InputReader inputReader)
+    public void Construct(InputReader inputReader, DimensionStateHolder dimensionStateHolder)
     {
         _inputReader = inputReader;
-        _inputReader.OnDimensionChangePressed += OnDimensionChangePressed;
+        _inputReader.OnDimensionChangePressed += OnDimensionChangePressed; ;
+        _dimensionStateHolder = dimensionStateHolder;
     }
 
-    private void OnDimensionChangePressed(object sender, System.EventArgs e)
+    private void OnDimensionChangePressed(object sender, EventArgs e)
     {
-        if (_isGravityAvailable)
+        if (_isGravityChangeAvailable)
         {
-            OnDimensionChange?.Invoke();
+            _dimensionStateHolder.ChangeDimension();
         }
     }
 
+    private AbilityHolder _abilityHolder;
+
     public void ToggleGravityChangeAvailable(bool newState)
     {
-        _isGravityAvailable = newState;
+        _isGravityChangeAvailable = newState;
     }
             
 }
+
+
