@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 1004836863}
   - component: {fileID: 1004836862}
   - component: {fileID: 1004836861}
+  - component: {fileID: 1004836864}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -518,6 +519,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1004836864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004836860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 5
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1064454105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -748,6 +773,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b43fe3e847c3840ba580a6f3bdccf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateManagerInstaller
+--- !u!1001 &1619897215
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 139521180254449244, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_Name
+      value: CameraShaker
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.14499
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.91898
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240624430016098855, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0b5a8e520139104897ebfbdd715e57a, type: 3}
 --- !u!114 &1871618318 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4514907807110932934, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
@@ -9892,3 +9974,4 @@ SceneRoots:
   - {fileID: 1563473815}
   - {fileID: 1064454105}
   - {fileID: 1220472907}
+  - {fileID: 1619897215}
