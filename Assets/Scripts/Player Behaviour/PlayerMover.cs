@@ -13,11 +13,20 @@ public class PlayerMover : MonoBehaviour
     [Header("Wall Check")]
     [SerializeField] private float _wallCheckDistance = 0.1f;
 
+    private DimensionStateHolder _dimensionStateHolder;
+
+    [Inject]
+    public void Construct(DimensionStateHolder dimensionStateHolder)
+    {
+        _dimensionStateHolder = dimensionStateHolder;
+    }
+
     private enum JumpOrigin
     {
         None,
         Player,
-        Trampoline
+        Trampoline,
+        DimensionChange
     }
 
     private JumpOrigin _currentJumpOrigin = JumpOrigin.None;
@@ -93,7 +102,11 @@ public class PlayerMover : MonoBehaviour
         _inputReader.OnMove += InputReader_OnMove;
         _inputReader.OnJumpPressed += InputReader_OnJumpPressed;
         _inputReader.OnJumpReleased += InputReader_OnJumpReleased;
+
+        _dimensionStateHolder.OnDimensionChanged += OnDimensionChanged;
     }
+
+   
 
     private void InputReader_OnMove(object sender, InputReader.MoveEventArgs e)
     {
@@ -111,6 +124,20 @@ public class PlayerMover : MonoBehaviour
 
         if (CanJumpCut())
             _isJumpCut = true;
+    }
+
+    private void OnDimensionChanged(Dimension obj)
+    {
+        _currentJumpOrigin = JumpOrigin.DimensionChange;
+
+        _rigidbody.linearVelocity =
+            new Vector2(_rigidbody.linearVelocity.x, 0f);
+
+        _isJumping = true;
+        _isJumpCut = false;
+        _isJumpFalling = false;
+
+        ResetJumpTimers();
     }
 
     private void Update()
@@ -310,6 +337,9 @@ public class PlayerMover : MonoBehaviour
         _inputReader.OnMove -= InputReader_OnMove;
         _inputReader.OnJumpPressed -= InputReader_OnJumpPressed;
         _inputReader.OnJumpReleased -= InputReader_OnJumpReleased;
+
+        _dimensionStateHolder.OnDimensionChanged -= OnDimensionChanged;
+
     }
 
     private void OnDrawGizmosSelected()

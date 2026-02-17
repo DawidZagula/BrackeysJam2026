@@ -6,9 +6,10 @@ public class GravityChanger : MonoBehaviour
 {
     public static GravityChanger Instance { get; private set; }
 
-    private DimensionStateHolder _dimensionStateHolder;
 
     private Vector2 _defaultGravityValue;
+
+    private DimensionStateHolder _dimensionStateHolder;
 
     [Inject]
     public void Construct(DimensionStateHolder dimensionStateHolder)
