@@ -353,8 +353,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7905185034747081707}
   - component: {fileID: 1011802788918925177}
-  - component: {fileID: 6814321302165474361}
   - component: {fileID: 8862838724527508838}
+  - component: {fileID: 3253732315879073604}
   - component: {fileID: 6044829559802947529}
   - component: {fileID: 8407754178039283411}
   m_Layer: 7
@@ -400,18 +400,6 @@ MonoBehaviour:
     m_Bits: 64
   _wallCheckDistance: 0.1
   _configurationData: {fileID: 11400000, guid: ce74b508bf89e8b488d1bff814f091ea, type: 2}
---- !u!114 &6814321302165474361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5193251379245481106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a7ce4407243ea8498f54e940b0d66e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeathZoneRegister
 --- !u!114 &8862838724527508838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +413,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KnockbackReceiver
   <IsBeingKnockedBack>k__BackingField: 0
+--- !u!114 &3253732315879073604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193251379245481106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8e6ac243aa13245862d62cb64622c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  _isGravityChangeAvailable: 1
 --- !u!50 &6044829559802947529
 Rigidbody2D:
   serializedVersion: 5

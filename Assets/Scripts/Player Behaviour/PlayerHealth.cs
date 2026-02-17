@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -25,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void ProcessDeath()
+    public void ProcessDeath()
     {
         //Animation will happen here
 

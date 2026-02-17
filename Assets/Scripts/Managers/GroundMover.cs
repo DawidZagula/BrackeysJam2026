@@ -113,9 +113,9 @@ public class GroundMover : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerDeathZoneRegister player))
+        if (collision.TryGetComponent(out PlayerHealth player))
         {
-            player.ProceedDeath();
+            player.ProcessDeath();
         }
     }
 
