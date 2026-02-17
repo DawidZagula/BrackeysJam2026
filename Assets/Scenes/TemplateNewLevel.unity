@@ -580,6 +580,67 @@ TilemapRenderer:
   m_CorrespondingSourceObject: {fileID: 5574002481418871866, guid: f7f1b6f3bc1d2cf428ab51c3d49ca42d, type: 3}
   m_PrefabInstance: {fileID: 4350299749337124358}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1241203439
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 466347040251001803, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_Name
+      value: FadeTransitionManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724477374767176540, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: _imageToFade
+      value: 
+      objectReference: {fileID: 6392904295441529609}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.95185
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.26354
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865632036662744130, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6a7c3ff9367eb80409ff62acdb646ed8, type: 3}
 --- !u!114 &1290711408 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8260720307022040748, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
@@ -9667,6 +9728,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
+--- !u!114 &6392904295441529609 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3363003887061409807, guid: 433e41b643e102a4a8e450c27b60bd71, type: 3}
+  m_PrefabInstance: {fileID: 6392904295441529608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &6963449254009034855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9815,3 +9887,4 @@ SceneRoots:
   - {fileID: 2116914366148359306}
   - {fileID: 1563473815}
   - {fileID: 1064454105}
+  - {fileID: 1241203439}

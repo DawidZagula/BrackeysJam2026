@@ -8,16 +8,19 @@ public class SceneLoader
         switch (sceneToLoad)
         {
             case GameScene.MainMenu:
-                LoadScene(0);
+                FadeTransitionManager.Instance.FadeOut(()=> LoadScene(0));
                 break;
             case GameScene.Level_1:
-                LoadScene(1);
+                FadeTransitionManager.Instance.FadeOut(() => LoadScene(1));
+
                 break;
             case GameScene.Level_2:
-                LoadScene(2);
+                FadeTransitionManager.Instance.FadeOut(() => LoadScene(2));
+
                 break;
             case GameScene.Level_3:
-                LoadScene(3);
+                FadeTransitionManager.Instance.FadeOut(() => LoadScene(3));
+
                 break;
         }
     }
