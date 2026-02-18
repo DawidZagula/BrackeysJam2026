@@ -72,7 +72,7 @@ public class MenuController : MonoBehaviour
     public void OnStartButton()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Level1"); // Guys this is static level I think we should change this to dynamic one.
+        SceneLoader.ProcessLoadScene(GameScene.Level_1);
     }
 
     public void OnExitButton()
