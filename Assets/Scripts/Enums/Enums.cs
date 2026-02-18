@@ -2,7 +2,9 @@ public enum GameState
 {
     NotStarted,
     Started,
-    GameOver
+    GameOver,
+    Cutscene,
+    Paused
 }
 
 public enum Dimension
