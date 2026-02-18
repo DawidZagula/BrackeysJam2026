@@ -10,6 +10,7 @@ public class PlayerVisual : MonoBehaviour
 
     //References
     private PlayerMover _playerMover;
+    private SquashAndStretch _squashAndStretch;
 
     // run-time state
     private Coroutine _currentRotationCoroutine;
@@ -25,6 +26,7 @@ public class PlayerVisual : MonoBehaviour
     private void Awake()
     {
         _playerMover = GetComponentInParent<PlayerMover>();
+        _squashAndStretch = GetComponentInParent<SquashAndStretch>();
     }
 
     private void Start()
@@ -46,21 +48,31 @@ public class PlayerVisual : MonoBehaviour
 
     private IEnumerator SmoothRotateZ(float targetZ)
     {
-        float startZRotation = transform.localEulerAngles.z;
+        float startZRotation = _squashAndStretch != null
+            ? _squashAndStretch.FlipAngle
+            : transform.localEulerAngles.z;
         float t = 0f;
 
-        if (startZRotation > 180f) 
+        if (startZRotation > 180f)
             startZRotation -= 360f;
 
         while (t < 1f)
         {
             t += Time.deltaTime * _turnSpeed;
             float z = Mathf.LerpAngle(startZRotation, targetZ, t);
-            transform.localEulerAngles = new Vector3(0f, 0f, z);
+
+            if (_squashAndStretch != null)
+                _squashAndStretch.SetFlipAngle(z);
+            else
+                transform.localEulerAngles = new Vector3(0f, 0f, z);
+
             yield return null;
         }
 
-        transform.localEulerAngles = new Vector3(0f, 0f, targetZ);
+        if (_squashAndStretch != null)
+            _squashAndStretch.SetFlipAngle(targetZ);
+        else
+            transform.localEulerAngles = new Vector3(0f, 0f, targetZ);
     }
 
     private void OnDestroy()
