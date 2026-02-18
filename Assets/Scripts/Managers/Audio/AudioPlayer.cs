@@ -7,14 +7,14 @@ public class AudioPlayer : MonoBehaviour
 
     public enum AudioName
     {
-        //To be added
+        // This is just an example, you can replace these with your actual sound effect names (TIM)
+        Death,
+        Jump
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
-
-    private Dictionary<AudioName, AudioClip> _enumNameAudioClipDictionary = new Dictionary<AudioName, AudioClip>();
-
     private AudioSource _audioSource;
+    private Dictionary<AudioName, AudioClip> _enumNameAudioClipDictionary = new Dictionary<AudioName, AudioClip>();
 
     private void Awake()
     {
@@ -36,8 +36,17 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        _audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+    }
+
+    public void PlaySound(AudioName name) => _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
     public void StopCurrentlyPlayedSound() => _audioSource.Stop();
     public bool IsPlaying() => _audioSource.isPlaying;
-    public void PlaySound(AudioName name) => _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
 
+    public void SetVolume(float volume)
+    {
+        _audioSource.volume = volume;
+    }
 }

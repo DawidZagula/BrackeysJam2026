@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     public void ProcessDeath()
     {
         //Animation will happen here
-
+        AudioPlayer.Instance.PlaySound(AudioPlayer.AudioName.Death);
         SceneLoader.ReloadScene();
     }
 }
