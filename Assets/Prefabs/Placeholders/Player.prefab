@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual
   _turnSpeed: 5
+  _anchorTransform: {fileID: 0}
 --- !u!95 &4664408222483763843
 Animator:
   serializedVersion: 7
@@ -526,9 +527,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af46f9f23db5bda47aca3dc3bdb4658b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquashAndStretch
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 4424178348310271837}
   Stretch: 0.1
-  squashParent: {fileID: 0}
+  squashParent: {fileID: 8868495607058415369}
+  <CanWork>k__BackingField: 1
 --- !u!1 &6926977384628689850
 GameObject:
   m_ObjectHideFlags: 0
