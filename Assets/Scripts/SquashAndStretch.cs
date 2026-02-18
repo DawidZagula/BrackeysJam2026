@@ -8,8 +8,7 @@ public class SquashAndStretch : MonoBehaviour
  
     private Rigidbody2D _rigidbody;
     private Vector3 _originalScale;
-
-    [field: SerializeField] public bool CanWork { get; set; } = true;
+    private float _flipAngle;
  
     private void Start()
     {
@@ -19,15 +18,20 @@ public class SquashAndStretch : MonoBehaviour
         if(!squashParent)
             squashParent = new GameObject(string.Format("_squash_{0}", name)).transform;
     }
+
+    public float FlipAngle => _flipAngle;
+
+    public void SetFlipAngle(float angle)
+    {
+        _flipAngle = angle;
+    }
  
     private void Update()
     {
-        if (!CanWork) { return; }
-
         Sprite.parent = transform;
         Sprite.localPosition = Vector3.zero;
         Sprite.localScale = _originalScale;
-        Sprite.localRotation = Quaternion.identity;
+        Sprite.localRotation = Quaternion.Euler(0f, 0f, _flipAngle);
  
         squashParent.localScale = Vector3.one;
         squashParent.position = transform.position;
