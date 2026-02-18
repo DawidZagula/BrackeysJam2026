@@ -5,7 +5,6 @@ using Zenject;
 
 public class GroundMover : MonoBehaviour
 {
-
     [Header("Collider Customization")]
     [SerializeField] private float _deathAreaHeight;
 
@@ -24,12 +23,28 @@ public class GroundMover : MonoBehaviour
 
     private GameStateManager _gameStateManager;
     private DimensionStateHolder _dimensionStateHolder;
+    private LavaFreezer _lavaFreezer;
+    
+    private float _freezeRemainingTime = 0f;
+    private bool _isFrozen = false;
     
     [Inject]
-    public void Construct(GameStateManager gameStateManager, DimensionStateHolder dimensionStateHolder)
+    public void Construct(GameStateManager gameStateManager, 
+        DimensionStateHolder dimensionStateHolder,
+        LavaFreezer lavaFreezer)
     {
         _gameStateManager = gameStateManager;
         _dimensionStateHolder = dimensionStateHolder;
+        _lavaFreezer = lavaFreezer;
+    }
+    private void FreezeLava(float freezeDuration)
+    {
+        _freezeRemainingTime += freezeDuration;
+        if (!_isFrozen)
+        {
+            _isFrozen = true;
+            _isMoving = false;
+        }
     }
     
     private void Awake()
@@ -56,6 +71,8 @@ public class GroundMover : MonoBehaviour
 
         PickupHolder.Instance.OnUsedPickup 
             += PickupHolder_OnUsedPickup;
+        
+        _lavaFreezer.OnLavaFrozen += FreezeLava;
     }
 
     private void GameStateManager_OnStateChanged(GameState gameState)
@@ -86,6 +103,8 @@ public class GroundMover : MonoBehaviour
 
     private void Update()
     {
+        HandleFreezeTimer();
+        
         if (!_isMoving) { return; }
 
         MoveUp();
@@ -98,6 +117,20 @@ public class GroundMover : MonoBehaviour
         if (Keyboard.current.mKey.wasPressedThisFrame)
         {
             DecreaseSpeed();
+        }
+    }
+
+    private void HandleFreezeTimer()
+    {
+        if (!_isFrozen) return;
+
+        _freezeRemainingTime -= Time.deltaTime;
+
+        if (_freezeRemainingTime < 0f)
+        {
+            _freezeRemainingTime = 0f;
+            _isFrozen = false;
+            _isMoving = true;
         }
     }
 
@@ -152,6 +185,8 @@ public class GroundMover : MonoBehaviour
 
         PickupHolder.Instance.OnUsedPickup
           -= PickupHolder_OnUsedPickup;
+        
+        _lavaFreezer.OnLavaFrozen -= FreezeLava;
     }
 
     private void OnDrawGizmos()

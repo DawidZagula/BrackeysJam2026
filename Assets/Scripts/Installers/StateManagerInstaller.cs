@@ -7,5 +7,6 @@ public class StateManagerInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<GameStateManager>().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<DimensionStateHolder>().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<LavaFreezer>().AsSingle().NonLazy();
     }
 }
