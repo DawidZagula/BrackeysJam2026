@@ -7,6 +7,7 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
 
     //References
     [SerializeField] private Player _player;
+    [SerializeField] private Transform _playerSpawnPosition;
     private GameStateManager _gameStateManager;
     private SpriteRenderer _visual;
 
@@ -24,6 +25,16 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
         _visual = GetComponentInChildren<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        if (RespawnSystem.Instance.GetIsAbilityLearnt())
+        {
+            _player.ToggleGravityChangeAvailable(true);
+            
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_isUsed) {return;}
@@ -31,6 +42,9 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out Player player))
         {
             _isUsed = true;
+
+            RespawnSystem.Instance.SetIsAbilityLearnt(true);
+            RespawnSystem.Instance.UpdateCurrentRespawnPoint(transform.position);
 
             _gameStateManager.ChangeCurrentState(GameState.Cutscene);
 
