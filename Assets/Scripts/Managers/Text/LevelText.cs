@@ -13,6 +13,7 @@ public class TextSequence
     [field:SerializeField] public string Id {  get; private set; }
     [field: SerializeField] public TextSequenceId TextSequenceId { get; private set; }
     [field: SerializeField] public TextSegment[] TextSegments { get; private set; }
+    [field: SerializeField] public float TimeToHideLastSegment { get; private set; }
 }
 
 [Serializable]

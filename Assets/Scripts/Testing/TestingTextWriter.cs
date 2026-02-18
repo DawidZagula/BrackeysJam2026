@@ -9,7 +9,7 @@ public class TestingTextWriter : MonoBehaviour
     {
         if (Keyboard.current.lKey.wasPressedThisFrame)
         {
-            TextWriter.Instance.StartTypingSequence(_sequenceId);
+            TextWriter.Instance.StartTypingSequence(_sequenceId, true);
         }
     }
 }

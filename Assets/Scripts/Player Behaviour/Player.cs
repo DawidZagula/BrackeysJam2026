@@ -5,6 +5,7 @@ using Zenject;
 public class Player : MonoBehaviour
 {
     [SerializeField] private bool _isGravityChangeAvailable;
+    public bool UsedGravityChangeFirstTime {  get; private set; }
 
     private InputReader _inputReader;
     private DimensionStateHolder _dimensionStateHolder;
@@ -21,11 +22,14 @@ public class Player : MonoBehaviour
     {
         if (_isGravityChangeAvailable)
         {
+            if (!UsedGravityChangeFirstTime)
+            {
+                UsedGravityChangeFirstTime = true;
+            }
+
             _dimensionStateHolder.ChangeDimension();
         }
     }
-
-    private AbilityHolder _abilityHolder;
 
     public void ToggleGravityChangeAvailable(bool newState)
     {
