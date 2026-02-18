@@ -8679,6 +8679,10 @@ PrefabInstance:
       propertyPath: _minSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2175834446968548787, guid: 5b978d21b00db364f89322dd46ac61b5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5737652743393283047, guid: 5b978d21b00db364f89322dd46ac61b5, type: 3}
       propertyPath: m_Name
       value: GroundMover
