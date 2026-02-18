@@ -29,7 +29,7 @@ public class RespawnSystem : MonoBehaviour
 
     private void ResetPersistentData()
     {
-        _persistentData.SpawnPointPosition = new Vector3(95, -95,0);
+        _persistentData.SpawnPointPosition = new Vector3(0, 0,0);
         _persistentData.IsAbilityLearnt = false;
     }
 
