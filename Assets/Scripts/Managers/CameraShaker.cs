@@ -5,7 +5,7 @@ using Zenject;
 
 public class CameraShaker : MonoBehaviour
 {
-    private CinemachineImpulseSource _inputSource;
+    private CinemachineImpulseSource _impulseSource;
     public static CameraShaker Instance { get; private set; }
 
     private DimensionStateHolder _dimensionStateHolder;
@@ -20,7 +20,7 @@ public class CameraShaker : MonoBehaviour
     {
         Instance = this;
 
-        _inputSource = GetComponent<CinemachineImpulseSource>();
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     private void Start()
@@ -39,7 +39,12 @@ public class CameraShaker : MonoBehaviour
     private void ShakeCamera()
     {
         const float baseShakeForce = 1;
-        _inputSource.GenerateImpulseWithForce(baseShakeForce);
+        _impulseSource.GenerateImpulseWithForce(baseShakeForce);
+    }
+
+    public void ShakeCamera(float shakeForceMultiplier)
+    {
+        _impulseSource.GenerateImpulse(shakeForceMultiplier);
     }
 
     private void OnDestroy()

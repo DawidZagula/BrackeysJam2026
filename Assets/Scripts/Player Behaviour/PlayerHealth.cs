@@ -45,6 +45,9 @@ public class PlayerHealth : MonoBehaviour
     {
         _isDead = true;
 
+        const float cameraShakeMultiplier = 3f;
+        CameraShaker.Instance.ShakeCamera(cameraShakeMultiplier);
+
         _gameStateManager.ChangeCurrentState(GameState.GameOver);
         _playerMover.StopAllMovement();
         
