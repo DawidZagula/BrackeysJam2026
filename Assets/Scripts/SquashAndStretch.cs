@@ -8,6 +8,8 @@ public class SquashAndStretch : MonoBehaviour
  
     private Rigidbody2D _rigidbody;
     private Vector3 _originalScale;
+
+    [field: SerializeField] public bool CanWork { get; set; } = true;
  
     private void Start()
     {
@@ -18,8 +20,10 @@ public class SquashAndStretch : MonoBehaviour
             squashParent = new GameObject(string.Format("_squash_{0}", name)).transform;
     }
  
-    private void Update()
+    private void LateUpdate()
     {
+        if (!CanWork) { return; }
+
         Sprite.parent = transform;
         Sprite.localPosition = Vector3.zero;
         Sprite.localScale = _originalScale;

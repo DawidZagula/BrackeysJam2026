@@ -8,8 +8,11 @@ public class PlayerVisual : MonoBehaviour
     [Header("Configuration")]
     [SerializeField] private float _turnSpeed = 5f;
 
-    //References
+
+    [Header("References")]
+    [SerializeField] private Transform _anchorTransform;
     private PlayerMover _playerMover;
+    private SquashAndStretch _squashAndStretch;
 
     // run-time state
     private Coroutine _currentRotationCoroutine;
@@ -25,6 +28,7 @@ public class PlayerVisual : MonoBehaviour
     private void Awake()
     {
         _playerMover = GetComponentInParent<PlayerMover>();
+        _squashAndStretch = GetComponentInParent<SquashAndStretch>();
     }
 
     private void Start()
@@ -35,6 +39,8 @@ public class PlayerVisual : MonoBehaviour
 
     private void DimensionStateHolder_OnDimensionChanged(Dimension dimension)
     {
+        _squashAndStretch.CanWork = false;
+
         float targetZ = (dimension == Dimension.Goofy) ? 180f : 0f;
         _playerMover.SetUpsideDown(dimension == Dimension.Goofy);
 
@@ -46,11 +52,20 @@ public class PlayerVisual : MonoBehaviour
 
     private IEnumerator SmoothRotateZ(float targetZ)
     {
-        float startZRotation = transform.localEulerAngles.z;
-        float t = 0f;
+        _squashAndStretch.CanWork = false;
 
-        if (startZRotation > 180f) 
+        _anchorTransform.localRotation = Quaternion.identity;
+        _anchorTransform.localScale = Vector3.one;
+        
+        transform.localRotation = Quaternion.identity;
+        transform.localPosition = Vector3.zero;
+        transform.localScale = Vector3.one;
+
+        float startZRotation = transform.localEulerAngles.z;
+        if (startZRotation > 180f)
             startZRotation -= 360f;
+
+        float t = 0f;
 
         while (t < 1f)
         {
@@ -61,7 +76,13 @@ public class PlayerVisual : MonoBehaviour
         }
 
         transform.localEulerAngles = new Vector3(0f, 0f, targetZ);
+        if (targetZ == 0f)
+        {
+            _squashAndStretch.CanWork = true;
+        }
+   
     }
+
 
     private void OnDestroy()
     {
