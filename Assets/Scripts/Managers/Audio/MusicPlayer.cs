@@ -8,12 +8,11 @@ public class MusicPlayer : MonoBehaviour
 
     public enum AudioName
     {
-        //To be added
+        MenuTheme
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
     private AudioSource _audioSource;
-
     private Dictionary<AudioName, AudioClip> _enumNameAudioClipDictionary = new Dictionary<AudioName, AudioClip>();
 
     private void Awake()
@@ -35,12 +34,17 @@ public class MusicPlayer : MonoBehaviour
         {
             _enumNameAudioClipDictionary[audioName] = _audioClipList[(int)audioName];
         }
-
     }
 
-    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //Waiting for music files
+        switch (scene.name)
+        {
+            case "GameMenuScene":
+                PlayMusic(AudioName.MenuTheme);
+                break;
+           
+        }
     }
 
     public void PlayMusic(AudioName name)
@@ -54,4 +58,13 @@ public class MusicPlayer : MonoBehaviour
 
     public void StopPlaying() => _audioSource.Stop();
 
+    public void SetVolume(float volume)
+    {
+        _audioSource.volume = volume;
+    }
+
+    public float GetVolume()
+    {
+        return _audioSource.volume;
+    }
 }
