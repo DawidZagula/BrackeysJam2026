@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class TextWriter : MonoBehaviour
         Instance = this;
     }
 
-    public void StartTypingSequence(TextSequenceId sequenceId)
+    public void StartTypingSequence(TextSequenceId sequenceId, Action onFinish = null)
     {
         foreach (TextSequence textSequence in _levelText.TextSequences)
         {
