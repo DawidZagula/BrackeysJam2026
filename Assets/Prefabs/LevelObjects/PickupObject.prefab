@@ -209,3 +209,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30d6b6f6087b3246b79fafd31bfa7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupVisual
+  _goofyWorldAnimIndex: 1

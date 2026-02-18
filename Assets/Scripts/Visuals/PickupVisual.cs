@@ -5,8 +5,9 @@ public class PickupVisual : MonoBehaviour
 {
     private Animator _animator;
 
+    [Range(0,2),SerializeField] private int _goofyWorldAnimIndex;
+
     private const string LavaWorldAnimName = "lavaSlowDown_0_base";
-    private const string GoofyWorldAnimName = "lavaSlowDown_Goofy_0_base";
 
     private DimensionStateHolder _dimensionStateHolder;
 
@@ -35,7 +36,7 @@ public class PickupVisual : MonoBehaviour
                 _animator.Play(LavaWorldAnimName);
                 break;
             case Dimension.Goofy:
-                _animator.Play(GoofyWorldAnimName);
+                _animator.Play($"lavaSlowDown_Goofy_{_goofyWorldAnimIndex}_base");
                 break;
         }
     }
