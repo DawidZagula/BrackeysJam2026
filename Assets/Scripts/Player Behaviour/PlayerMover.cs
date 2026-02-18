@@ -332,6 +332,13 @@ public class PlayerMover : MonoBehaviour
         ResetJumpTimers();
     }
 
+    public void StopAllMovement()
+    {
+        _moveInput = Vector2.zero;
+        _rigidbody.angularVelocity = 0f;
+        _rigidbody.bodyType = RigidbodyType2D.Static;
+    }
+
     private void UnsubscribeEvents()
     {
         _inputReader.OnMove -= InputReader_OnMove;

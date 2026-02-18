@@ -11,9 +11,11 @@ public class PlayerVisual : MonoBehaviour
     //References
     private PlayerMover _playerMover;
     private SquashAndStretch _squashAndStretch;
+    private Animator _animator;
 
     // run-time state
     private Coroutine _currentRotationCoroutine;
+    private Action _onDeathAnimFinish;
 
     private DimensionStateHolder _dimensionStateHolder;
 
@@ -27,12 +29,25 @@ public class PlayerVisual : MonoBehaviour
     {
         _playerMover = GetComponentInParent<PlayerMover>();
         _squashAndStretch = GetComponentInParent<SquashAndStretch>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
         _dimensionStateHolder.OnDimensionChanged
             += DimensionStateHolder_OnDimensionChanged;
+    }
+
+    public void PlayAnimation(string stateName, Action onFinish = null)
+    {
+        _onDeathAnimFinish = onFinish;
+        _animator.Play(stateName, 0);
+    }
+
+    //Called from animation Event
+    public void CallOnDeathAnimFinish()
+    {
+        _onDeathAnimFinish?.Invoke();
     }
 
     private void DimensionStateHolder_OnDimensionChanged(Dimension dimension)
@@ -74,7 +89,6 @@ public class PlayerVisual : MonoBehaviour
         else
             transform.localEulerAngles = new Vector3(0f, 0f, targetZ);
     }
-
     private void OnDestroy()
     {
         if (_dimensionStateHolder != null)
