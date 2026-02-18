@@ -12,6 +12,9 @@ public class TrampolineDimensionObject : BaseDimensionObject
         if (_dimensionStateHolder.CurrentDimension != _trampolineActiveDimension)
             return;
 
+        const float cameraShakeMultiplier = .75f;
+        CameraShaker.Instance.ShakeCamera(cameraShakeMultiplier);
+
         float trampolineVelocity = CalculateTrampolineVelocity();
 
         playerMover.LaunchFromTrampoline(trampolineVelocity);
