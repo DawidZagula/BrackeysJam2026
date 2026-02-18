@@ -20,7 +20,7 @@ public class SquashAndStretch : MonoBehaviour
             squashParent = new GameObject(string.Format("_squash_{0}", name)).transform;
     }
  
-    private void LateUpdate()
+    private void Update()
     {
         if (!CanWork) { return; }
 

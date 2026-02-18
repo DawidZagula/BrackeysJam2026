@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4424178348310271837}
-  - component: {fileID: 5039862861091526499}
+  - component: {fileID: 241759417945669784}
   - component: {fileID: 4664408222483763843}
   - component: {fileID: 1102859647664755082}
   m_Layer: 0
@@ -249,7 +249,7 @@ Transform:
   - {fileID: 7272218978243944359}
   m_Father: {fileID: 8868495607058415369}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5039862861091526499
+--- !u!114 &241759417945669784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual
   _turnSpeed: 5
-  _anchorTransform: {fileID: 0}
+  _anchorTransform: {fileID: 8868495607058415369}
 --- !u!95 &4664408222483763843
 Animator:
   serializedVersion: 7
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8e6ac243aa13245862d62cb64622c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  _isGravityChangeAvailable: 1
+  _isGravityChangeAvailable: 0
 --- !u!50 &6044829559802947529
 Rigidbody2D:
   serializedVersion: 5
@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquashAndStretch
   Sprite: {fileID: 4424178348310271837}
-  Stretch: 0.1
+  Stretch: 0.015
   squashParent: {fileID: 8868495607058415369}
   <CanWork>k__BackingField: 1
 --- !u!1 &6926977384628689850
