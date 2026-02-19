@@ -8,7 +8,8 @@ public class MusicPlayer : MonoBehaviour
 
     public enum AudioName
     {
-        MenuTheme
+        MenuTheme,
+        Gameplay
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
@@ -38,10 +39,13 @@ public class MusicPlayer : MonoBehaviour
 
     private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        switch (scene.name)
+        switch (scene.buildIndex)
         {
-            case "GameMenuScene":
+            case 0:
                 PlayMusic(AudioName.MenuTheme);
+                break;
+            case 1:
+                PlayMusic(AudioName.Gameplay);
                 break;
            
         }

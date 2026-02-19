@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicPlayer
   _audioClipList:
+  - {fileID: 8300000, guid: 7fbf4a445980d8643a6ea9e6a2c29019, type: 3}
   - {fileID: 8300000, guid: 271506799f3fd9d4ebcd4b514befb338, type: 3}
 --- !u!82 &5214739411940505565
 AudioSource:
