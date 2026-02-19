@@ -6,6 +6,7 @@ using Zenject;
 
 public class MenuController : MonoBehaviour
 {
+
     [Header("Panels")]
     [SerializeField] private GameObject _mainMenu;
     [SerializeField] private GameObject _optionMenu;
@@ -76,6 +77,7 @@ public class MenuController : MonoBehaviour
 
     void Update()
     {
+
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (_optionMenu.activeSelf)
@@ -131,6 +133,7 @@ public class MenuController : MonoBehaviour
         _backgroundPanel.SetActive(false);
         _mainMenu.SetActive(false);
         Time.timeScale = 1f;
+        _gameStateManager.ChangeCurrentState(GameState.Started);
     }
 
     // ---- NAVIGATION ----
