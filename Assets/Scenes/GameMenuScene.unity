@@ -485,6 +485,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2648209759803444526, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3360496589168928697, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_Camera
       value: 
@@ -591,6 +595,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4111413947394769827, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: _shouldAnimate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5340654495869211487, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5408086603440650295, guid: c04314097057dc548a8240edf97e3516, type: 3}
@@ -776,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320076006129913971, guid: 3cecf75e16eec624a811fb994b0f0764, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 622819428386876948, guid: 3cecf75e16eec624a811fb994b0f0764, type: 3}
       propertyPath: m_Pivot.x
