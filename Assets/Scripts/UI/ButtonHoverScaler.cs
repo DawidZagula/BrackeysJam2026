@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class ButtonHoverScaler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -19,15 +21,51 @@ public class ButtonHoverScaler : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     private bool _isHoveredOrSelected;
 
-    private void Awake()
+    private void OnEnable()
     {
-        if (_targetText == null)
+        ResetState();
+
+        if (IsPointerOverThis())
         {
-            Debug.LogError($"{nameof(ButtonHoverScaler)}: Target TextMeshProUGUI not assigned.", this);
-            enabled = false;
-            return;
+            _isHoveredOrSelected = true;
+            RefreshTargetSize();
+            _currentFontSize = _targetFontSize;
+            _targetText.fontSize = _currentFontSize;
+        }
+    }
+
+    private bool IsPointerOverThis()
+    {
+        if (EventSystem.current == null)
+            return false;
+
+        if (Mouse.current == null)
+            return false;
+
+        Vector2 pointerPosition = Mouse.current.position.ReadValue();
+
+        PointerEventData eventData = new PointerEventData(EventSystem.current)
+        {
+            position = pointerPosition
+        };
+
+        List<RaycastResult> results = new();
+        EventSystem.current.RaycastAll(eventData, results);
+
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject == gameObject ||
+                result.gameObject.transform.IsChildOf(transform))
+            {
+                return true;
+            }
         }
 
+        return false;
+    }
+
+    private void Awake()
+    {
         _baseFontSize = _targetText.fontSize;
         _currentFontSize = _baseFontSize;
         _targetFontSize = _baseFontSize;
@@ -57,6 +95,24 @@ public class ButtonHoverScaler : MonoBehaviour, IPointerEnterHandler, IPointerEx
         _targetFontSize = _isHoveredOrSelected
             ? _baseFontSize * _hoverFontSizeMultiplier
             : _baseFontSize;
+    }
+
+    private void OnDisable()
+    {
+        ResetState();
+    }
+
+    private void ResetState()
+    {
+        _isHoveredOrSelected = false;
+        _velocity = 0f;
+        _currentFontSize = _baseFontSize;
+        _targetFontSize = _baseFontSize;
+
+        if (_targetText != null)
+        {
+            _targetText.fontSize = _baseFontSize;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
