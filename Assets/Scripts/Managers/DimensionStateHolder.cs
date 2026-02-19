@@ -33,6 +33,13 @@ public class DimensionStateHolder
         CurrentDimension = 
             CurrentDimension == Dimension.Lava 
             ? Dimension.Goofy : Dimension.Lava;
+
+        AudioPlayer.AudioName soundToPlay =
+            CurrentDimension == Dimension.Lava ?
+            AudioPlayer.AudioName.ChangeDimension2 :
+            AudioPlayer.AudioName.ChangeDimension;
+
+        AudioPlayer.Instance.PlaySound(soundToPlay);
     }
 
 }

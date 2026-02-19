@@ -12,6 +12,8 @@ public class TrampolineDimensionObject : BaseDimensionObject
         if (_dimensionStateHolder.CurrentDimension != _trampolineActiveDimension)
             return;
 
+        AudioPlayer.Instance.PlaySound(AudioPlayer.AudioName.TrampolineJump);
+
         const float cameraShakeMultiplier = .75f;
         CameraShaker.Instance.ShakeCamera(cameraShakeMultiplier);
 

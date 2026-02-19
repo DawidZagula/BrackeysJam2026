@@ -7,9 +7,11 @@ public class AudioPlayer : MonoBehaviour
 
     public enum AudioName
     {
-        // This is just an example, you can replace these with your actual sound effect names (TIM)
         Death,
-        Jump
+        Jump,
+        TrampolineJump,
+        ChangeDimension,
+        ChangeDimension2
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
