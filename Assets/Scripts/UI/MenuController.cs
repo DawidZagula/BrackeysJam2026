@@ -8,10 +8,22 @@ public class MenuController : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private GameObject _mainMenu;
     [SerializeField] private GameObject _optionMenu;
+    [SerializeField] private GameObject _creditsMenu;
+    [SerializeField] private GameObject _exitConfirmationMenu;
+    [SerializeField] private GameObject _backToMenuConfirmationMenu;
 
     [Header("Buttons - Show/Hide per scene")]
     [SerializeField] private GameObject _startButton;
     [SerializeField] private GameObject _resumeButton;
+    [SerializeField] private GameObject _backToMenuButton;
+    [SerializeField] private GameObject _exitButton;
+
+    [SerializeField] private GameObject _creditsButton;
+    [SerializeField] private GameObject _backFromCreditsButton;
+
+    [SerializeField] private GameObject _exitConfirmationButton;
+    [SerializeField] private GameObject _confirmExitButton;
+    [SerializeField] private GameObject _backFromExitButton;
 
     [Header("Audio Settings")]
     [SerializeField] private Slider _musicSlider;
@@ -29,12 +41,17 @@ public class MenuController : MonoBehaviour
         {
             _mainMenu.SetActive(true);
             _startButton.SetActive(true);
+            //_exitButton.SetActive(true); // for desktop release only
+            _backToMenuButton.SetActive(false);
+
             if (_resumeButton != null) _resumeButton.SetActive(false);
         }
         else
         {
+            _backToMenuButton.SetActive(true);
             _mainMenu.SetActive(false);
             _startButton.SetActive(false);
+            _exitButton.SetActive(false);
             if (_resumeButton != null) _resumeButton.SetActive(true);
         }
 
@@ -83,7 +100,8 @@ public class MenuController : MonoBehaviour
     public void OnBackToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("GameMenuScene");
+        SceneLoader.ProcessLoadScene(GameScene.MainMenu);
+
     }
 
     // ---- OPTIONS ----
@@ -93,9 +111,19 @@ public class MenuController : MonoBehaviour
         _optionMenu.SetActive(true);
     }
 
+    public void OnCreditsButton()
+    {
+        _mainMenu.SetActive(false);
+
+    }
+
     public void OnBackToMenu()
     {
-        _optionMenu.SetActive(false);
+        if (_optionMenu.activeInHierarchy)
+        {
+            _optionMenu.SetActive(false);
+        }
+
         _mainMenu.SetActive(true);
         SaveSettings();
     }
