@@ -43,6 +43,7 @@ public class PlayerMover : MonoBehaviour
     private bool _isJumpFalling;
     private bool _isUpsideDown;
 
+    
     // Timers
     private float _lastOnGroundTime;
     private float _lastPressedJumpTime;
@@ -222,6 +223,10 @@ public class PlayerMover : MonoBehaviour
 
         if (CanJump() && _lastPressedJumpTime > 0)
         {
+            if (!_isJumping)
+            {
+                AudioPlayer.Instance.PlaySound(AudioPlayer.AudioName.Jump);       
+            }
             _isJumping = true;
             PerformJump();
         }

@@ -84,7 +84,6 @@ public class InputReader : IDisposable
             OnJumpReleased?.Invoke(this, EventArgs.Empty);
             return;
         }
-
         OnJumpPressed?.Invoke(this, EventArgs.Empty);
     }
 
