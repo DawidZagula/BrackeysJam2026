@@ -12,6 +12,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _creditsMenu;
     [SerializeField] private GameObject _quitGameConfirmationMenu;
     [SerializeField] private GameObject _backToMenuConfirmationMenu;
+    [SerializeField] private GameObject _backgroundPanel;
 
     [Header("Buttons - Show/Hide per scene")]
     [SerializeField] private GameObject _startButton;
@@ -63,6 +64,9 @@ public class MenuController : MonoBehaviour
             _startButton.SetActive(false);
             _creditsButton.SetActive(false);
             _exitButton.SetActive(false);
+
+            _backgroundPanel.SetActive(false);
+
             if (_resumeButton != null) _resumeButton.SetActive(true);
         }
 
@@ -95,7 +99,7 @@ public class MenuController : MonoBehaviour
                 //return;
             }
             else if (!_isMainMenu)
-            {              
+            {
                 TogglePause();
             }
         }
@@ -106,6 +110,7 @@ public class MenuController : MonoBehaviour
     {
         _isPaused = !_isPaused;
 
+        _backgroundPanel.SetActive(_isPaused);
         if (_isPaused)
         {
             _gameStateManager.ChangeCurrentState(GameState.Paused);
@@ -115,7 +120,7 @@ public class MenuController : MonoBehaviour
             _gameStateManager.ChangeCurrentState(GameState.Started);
         }
 
-            _mainMenu.SetActive(_isPaused);
+        _mainMenu.SetActive(_isPaused);
         Time.timeScale = _isPaused ? 0f : 1f;
 
     }
@@ -123,6 +128,7 @@ public class MenuController : MonoBehaviour
     public void OnResumeButton()
     {
         _isPaused = false;
+        _backgroundPanel.SetActive(false);
         _mainMenu.SetActive(false);
         Time.timeScale = 1f;
     }
