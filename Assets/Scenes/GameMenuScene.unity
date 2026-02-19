@@ -461,6 +461,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2052049092409688798, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052049092409688798, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2375501085043346074, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -488,6 +496,18 @@ PrefabInstance:
     - target: {fileID: 3360496589168928697, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_SortingLayerID
       value: 358361999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632968311567906897, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632968311567906897, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632968311567906897, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4059995681235018470, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_Pivot.x
@@ -589,6 +609,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5663656406299762141, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5719713149358707256, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -609,6 +633,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5952828782947955084, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952828782947955084, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952828782947955084, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451902290512792920, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451902290512792920, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6714666103453029797, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -624,6 +668,10 @@ PrefabInstance:
     - target: {fileID: 6714666103453029797, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201719042239627935, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 42.357635
       objectReference: {fileID: 0}
     - target: {fileID: 8890686469077047481, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_AnchorMax.y
@@ -728,7 +776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320076006129913971, guid: 3cecf75e16eec624a811fb994b0f0764, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 622819428386876948, guid: 3cecf75e16eec624a811fb994b0f0764, type: 3}
       propertyPath: m_Pivot.x
