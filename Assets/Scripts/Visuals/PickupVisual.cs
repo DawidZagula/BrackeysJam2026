@@ -5,7 +5,7 @@ public class PickupVisual : MonoBehaviour
 {
     private Animator _animator;
 
-    [Range(0,2),SerializeField] private int _goofyWorldAnimIndex;
+    [Range(0,1),SerializeField] private int _goofyWorldAnimIndex;
 
     private const string LavaWorldAnimName = "lavaSlowDown_0_base";
 
