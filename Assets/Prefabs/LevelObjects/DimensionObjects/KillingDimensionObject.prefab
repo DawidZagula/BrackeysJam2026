@@ -55,7 +55,7 @@ MonoBehaviour:
   _collider: {fileID: 2956291106775871847}
   _hasDifferentVisuals: 1
   _lavaDimensionVisual: {fileID: 6723963429988506304, guid: 6597a49241fd11546bacb60797e46b2a, type: 3}
-  _goofyDimensionVisual: {fileID: 6723963429988506304, guid: 6597a49241fd11546bacb60797e46b2a, type: 3}
+  _goofyDimensionVisual: {fileID: 1839388236596237248, guid: f916eb55c09332a4a87d8986443fa8ea, type: 3}
 --- !u!61 &2956291106775871847
 BoxCollider2D:
   m_ObjectHideFlags: 0

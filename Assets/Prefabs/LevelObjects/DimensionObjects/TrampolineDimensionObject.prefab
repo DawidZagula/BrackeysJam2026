@@ -114,6 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5531382172632176632}
   - component: {fileID: 8479013984904803493}
+  - component: {fileID: 2337734472377999683}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -195,3 +196,23 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2337734472377999683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8561876273803856011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ddc728f8084e7049bb7f47304862ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TweenPosition
+  _isVerticalTween: 1
+  _targetVerticalPosition: 0.3
+  _verticalTweenTravelTime: 0.6
+  _verticalEaseType: 15
+  _isHorizontalTween: 0
+  _targetHorizontalPosition: 0
+  _horizontalTweenTravelTime: 0
+  _horizontalEaseType: 0
