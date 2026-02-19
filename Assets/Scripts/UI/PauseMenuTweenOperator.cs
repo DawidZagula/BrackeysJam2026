@@ -52,6 +52,8 @@ public class PauseMenuTweenOperator : MonoBehaviour
 
     public void TweenShow()
     {
+        CancelActiveTweens();
+
         LeanTween.moveY
             (_backgroundImageRect, _backgroundVisiblePosition.y, _tweenDuration)
             .setEase(_easeTypeBackground)
@@ -65,6 +67,8 @@ public class PauseMenuTweenOperator : MonoBehaviour
 
     public void TweenHide(Action onFinish = null)
     {
+        CancelActiveTweens();
+
         LeanTween.moveY
             (_backgroundImageRect, _backgroundHiddenPosition.y, _tweenDuration)
             .setEase(_easeTypeBackground)
@@ -75,5 +79,11 @@ public class PauseMenuTweenOperator : MonoBehaviour
             .setEase(_easeTypeMenu)
             .setIgnoreTimeScale(true)
             .setOnComplete(() => onFinish?.Invoke());
+    }
+
+    private void CancelActiveTweens()
+    {
+        LeanTween.cancel(_backgroundImageRect);
+        LeanTween.cancel(_mainMenuRect);
     }
 }
