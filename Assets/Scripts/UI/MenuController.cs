@@ -106,7 +106,9 @@ public class MenuController : MonoBehaviour
                 //OnBackToMenuFromQuitGameConfirmation();
                 //return;
             }
-            else if (!_isMainMenu)
+            else if (!_isMainMenu &&
+                _gameStateManager.GetCurrentState != GameState.GameOver
+                && _gameStateManager.GetCurrentState != GameState.Cutscene)
             {
                 TogglePause();
             }
