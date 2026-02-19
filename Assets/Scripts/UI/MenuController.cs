@@ -37,11 +37,17 @@ public class MenuController : MonoBehaviour
     private bool _isMainMenu;
 
     private GameStateManager _gameStateManager;
+    private PauseMenuTweenOperator _pauseMenuTweenOperator;
 
     [Inject]
     public void Construct(GameStateManager gameStateManager)
     {
         _gameStateManager = gameStateManager;
+    }
+
+    private void Awake()
+    {
+        _pauseMenuTweenOperator = GetComponent<PauseMenuTweenOperator>();
     }
 
     void Start()
@@ -112,22 +118,29 @@ public class MenuController : MonoBehaviour
     {
         _isPaused = !_isPaused;
 
-        _backgroundPanel.SetActive(_isPaused);
         if (_isPaused)
         {
             _gameStateManager.ChangeCurrentState(GameState.Paused);
+            _pauseMenuTweenOperator.TweenShow();
         }
         else
         {
-            _gameStateManager.ChangeCurrentState(GameState.Started);
+            _pauseMenuTweenOperator.TweenHide(ResumeGame);
+            return;
         }
 
+        _backgroundPanel.SetActive(_isPaused);
         _mainMenu.SetActive(_isPaused);
         Time.timeScale = _isPaused ? 0f : 1f;
 
     }
 
     public void OnResumeButton()
+    {
+        _pauseMenuTweenOperator.TweenHide(ResumeGame);
+    }
+
+    private void ResumeGame()
     {
         _isPaused = false;
         _backgroundPanel.SetActive(false);
