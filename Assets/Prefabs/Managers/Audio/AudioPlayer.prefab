@@ -143,5 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
   _audioClipList:
-  - {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
-  - {fileID: 8300000, guid: 9cb65eb2505fbf443ac876ba177374f9, type: 3}
+  - {fileID: 8300000, guid: b76bbacafdb9e6b43bf0d055f18bd87b, type: 3}
+  - {fileID: 8300000, guid: 30cdc10908773e145ad3bc30409eac56, type: 3}
+  - {fileID: 8300000, guid: eb85c46c829e29545a94c1f1acbd9050, type: 3}
+  - {fileID: 8300000, guid: 360fdb8a0a4acc34b93559d636b2556e, type: 3}
+  - {fileID: 8300000, guid: 921f6510804526c419b6bf3c2822ceb6, type: 3}
