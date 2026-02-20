@@ -14,7 +14,9 @@ public class RespawnPoint : MonoBehaviour
         {
             RespawnSystem.Instance.UpdateCurrentRespawnPoint(_playerSpawnPosition.position);
             _isUsed = true;
-            Debug.Log("Changed respawn point");
+
+            //TextWriter.Instance.SetTextField(TextWriter.TextFieldsId.TopMiddle);
+            TextWriter.Instance.StartTypingSequence(TextSequenceId.ReachedSpawnPoint, TextWriter.TextFieldsId.TopMiddle, true);
         }
     }
 }

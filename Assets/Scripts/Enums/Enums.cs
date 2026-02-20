@@ -25,5 +25,6 @@ public enum GameScene
 public enum TextSequenceId
 {
     Level_1_Intro,
-    Level_1_GainGravityAbility
+    Level_1_GainGravityAbility,
+    ReachedSpawnPoint
 }

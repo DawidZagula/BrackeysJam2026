@@ -16,7 +16,7 @@ public class TextWriterStarter : MonoBehaviour
             _alreadyTriggered = true;
 
             TextWriter.Instance.
-                StartTypingSequence(_textSequenceId, true);
+                StartTypingSequence(_textSequenceId, TextWriter.TextFieldsId.TopLeft, true);
         }
     }
 

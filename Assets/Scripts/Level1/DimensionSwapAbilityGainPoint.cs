@@ -62,7 +62,8 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
         TextWriter.Instance.SetTextField(TextWriter.TextFieldsId.TopMiddle);
 
         TextWriter.Instance.
-            StartTypingSequence(_cutsceneTextSequence, false, EndCutsceneSequence);
+            StartTypingSequence
+            (_cutsceneTextSequence, TextWriter.TextFieldsId.TopMiddle, false, EndCutsceneSequence);
     }
 
     private void EndCutsceneSequence()

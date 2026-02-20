@@ -27,9 +27,6 @@ public class TextWriter : MonoBehaviour
     private Dictionary<TextFieldsId, TextMeshProUGUI> _idTextFieldMap
         = new Dictionary<TextFieldsId, TextMeshProUGUI>();
 
-    //Run-time state
-    private Coroutine _currentTypingRoutine;
-
     private void Awake()
     {
         Instance = this;
@@ -61,64 +58,52 @@ public class TextWriter : MonoBehaviour
         }
     }
 
-    public void StartTypingSequence(TextSequenceId sequenceId, bool shouldClearAtEnd, Action onFinish = null)
+    public void StartTypingSequence(TextSequenceId sequenceId, TextFieldsId textFieldId, bool shouldClearAtEnd, Action onFinish = null)
     {
-        ToggleCurrentTextFieldVisilibity(true);
+        TextMeshProUGUI targetField = _idTextFieldMap[textFieldId];
+        targetField.gameObject.SetActive(true);
 
         foreach (TextSequence textSequence in _levelText.TextSequences)
         {
-            if (textSequence.TextSequenceId == sequenceId)
-            {
-                if (_currentTypingRoutine != null) return;
-                _currentTypingRoutine = StartCoroutine(TypingRoutine(textSequence, shouldClearAtEnd, onFinish));
-                return;
-            }
+            if (textSequence.TextSequenceId != sequenceId)
+                continue;
+
+            StartCoroutine(TypingRoutine(textSequence, targetField, shouldClearAtEnd, onFinish));
+            return;
         }
     }
 
-    private IEnumerator TypingRoutine(TextSequence textSequence, bool shouldClearAtEnd, Action onFinish)
+    private IEnumerator TypingRoutine(TextSequence textSequence, TextMeshProUGUI textField, bool shouldClearAtEnd, Action onFinish)
     {
         int textSegmentsCount = textSequence.TextSegments.Length;
-        int currentSegmentIndex = 0;
-        while (currentSegmentIndex < textSegmentsCount)
+
+        for (int segmentIndex = 0; segmentIndex < textSegmentsCount; segmentIndex++)
         {
-            _currentTextField.text = string.Empty;
+            textField.text = string.Empty;
 
-            TextSegment currentSegment = textSequence.TextSegments[currentSegmentIndex];
-            float timeToNextSegment = currentSegment.TimeToNextSegment;
-            float timeBetweenLetters = currentSegment.TimeBetweenLetters;
+            TextSegment segment = textSequence.TextSegments[segmentIndex];
 
-            int currentLetterIndex = 0;
-
-            while (currentLetterIndex < currentSegment.Text.Length)
+            foreach (char letter in segment.Text)
             {
-                yield return new WaitForSeconds(timeBetweenLetters);
-
-                char letterToPrint = currentSegment.Text[currentLetterIndex];
-                _currentTextField.text += letterToPrint;
-
-                currentLetterIndex++;
+                yield return new WaitForSeconds(segment.TimeBetweenLetters);
+                textField.text += letter;
             }
-            currentSegmentIndex++;
-            if (currentSegmentIndex < textSegmentsCount)
+
+            if (segmentIndex < textSegmentsCount - 1)
             {
-                yield return new WaitForSeconds(timeToNextSegment);
+                yield return new WaitForSeconds(segment.TimeToNextSegment);
             }
         }
 
-        float timeToHideLastSegment = textSequence.TimeToHideLastSegment;
-        yield return new WaitForSeconds(timeToHideLastSegment);
+        yield return new WaitForSeconds(textSequence.TimeToHideLastSegment);
 
         if (shouldClearAtEnd)
         {
-            ClearText();
+            textField.text = string.Empty;
+            textField.gameObject.SetActive(false);
         }
-        _currentTypingRoutine = null;
 
-        if (onFinish != null)
-        {
-            onFinish();
-        }
+        onFinish?.Invoke();
     }
 
     public void SetTextField(TextFieldsId textFieldId)

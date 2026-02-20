@@ -39,3 +39,10 @@ MonoBehaviour:
       <TimeBetweenLetters>k__BackingField: 0.03
       <TimeToNextSegment>k__BackingField: 1
     <TimeToHideLastSegment>k__BackingField: 0
+  - <Id>k__BackingField: Reached spawn point!
+    <TextSequenceId>k__BackingField: 2
+    <TextSegments>k__BackingField:
+    - <Text>k__BackingField: You have reached a spawn point!
+      <TimeBetweenLetters>k__BackingField: 0.03
+      <TimeToNextSegment>k__BackingField: 0
+    <TimeToHideLastSegment>k__BackingField: 2
