@@ -11,6 +11,7 @@ public class GhostEffectInitializer : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject _ghostPrefab;
     private Rigidbody2D _rigidbody;
+    private SquashAndStretch _squashAndStretch;
 
     //runtime state
     private float _ghostDelaySeconds;
@@ -27,6 +28,7 @@ public class GhostEffectInitializer : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _squashAndStretch = GetComponent<SquashAndStretch>();
     }
  
 
@@ -49,8 +51,14 @@ public class GhostEffectInitializer : MonoBehaviour
         }
         else
         {
-            GameObject  ghostInstance 
-                = Instantiate(_ghostPrefab, transform.position, transform.rotation);
+            Quaternion ghostRotation = transform.rotation;
+            if (_squashAndStretch != null)
+            {
+                ghostRotation *= Quaternion.Euler(0f, 0f, _squashAndStretch.FlipAngle);
+            }
+
+            GameObject  ghostInstance
+                = Instantiate(_ghostPrefab, transform.position, ghostRotation);
 
             _ghostDelaySeconds = _ghostDelay;
         }
