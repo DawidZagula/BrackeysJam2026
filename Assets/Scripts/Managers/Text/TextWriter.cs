@@ -117,7 +117,6 @@ public class TextWriter : MonoBehaviour
     {
         _currentTextField.text = string.Empty;
         ToggleCurrentTextFieldVisilibity(false);
-        Debug.Log("Text cleared");
     }
 
     private void ToggleCurrentTextFieldVisilibity(bool newState)
