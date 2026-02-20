@@ -13,6 +13,9 @@ public class PlayerMover : MonoBehaviour
     [Header("Wall Check")]
     [SerializeField] private float _wallCheckDistance = 0.1f;
 
+    [Header("PlayerEffects")]
+    [SerializeField] private ParticleSystem _dustEffect;
+
     private DimensionStateHolder _dimensionStateHolder;
 
     [Inject]
@@ -42,6 +45,7 @@ public class PlayerMover : MonoBehaviour
     private bool _isJumpCut;
     private bool _isJumpFalling;
     private bool _isUpsideDown;
+    private bool _wasGrounded = true;
 
     
     // Timers
@@ -147,13 +151,22 @@ public class PlayerMover : MonoBehaviour
         _lastOnGroundTime -= Time.deltaTime;
         _lastPressedJumpTime -= Time.deltaTime;
 
-        if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer))
+        bool isGrounded = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer);
+
+        if (isGrounded)
         {
             if (!_isJumping)
             {
                 _lastOnGroundTime = _configurationData.coyoteTime;
             }
+
+            if (!_wasGrounded)
+            {
+                CreateDustEffect();
+            }
         }
+
+        _wasGrounded = isGrounded;
 
         if (_isJumping && _rigidbody.linearVelocity.y < 0)
         {
@@ -225,7 +238,8 @@ public class PlayerMover : MonoBehaviour
         {
             if (!_isJumping)
             {
-                AudioPlayer.Instance.PlaySound(AudioPlayer.AudioName.Jump);       
+                AudioPlayer.Instance.PlaySound(AudioPlayer.AudioName.Jump);    
+                CreateDustEffect();  
             }
             _isJumping = true;
             PerformJump();
@@ -314,6 +328,14 @@ public class PlayerMover : MonoBehaviour
             && _rigidbody.linearVelocity.y > 0
             && _currentJumpOrigin == JumpOrigin.Player
             && _lastOnGroundTime <= 0;
+    }
+
+    private void CreateDustEffect()
+    {
+        if (_dustEffect != null)
+        {
+            _dustEffect.Play();
+        }
     }
 
     private void OnDestroy()
