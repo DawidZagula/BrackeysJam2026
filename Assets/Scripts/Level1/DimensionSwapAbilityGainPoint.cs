@@ -11,6 +11,9 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
     private GameStateManager _gameStateManager;
     private SpriteRenderer _visual;
 
+    [Header("Configuration")]
+    [SerializeField] private TextSequenceId _cutsceneTextSequence;
+
     //Runtime state
     private bool _isUsed;
 
@@ -59,7 +62,7 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
         TextWriter.Instance.SetTextField(TextWriter.TextFieldsId.TopMiddle);
 
         TextWriter.Instance.
-            StartTypingSequence(TextSequenceId.Level_1_GainGravityAbility, false, EndCutsceneSequence);
+            StartTypingSequence(_cutsceneTextSequence, false, EndCutsceneSequence);
     }
 
     private void EndCutsceneSequence()
