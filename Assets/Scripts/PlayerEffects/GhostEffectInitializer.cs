@@ -11,7 +11,7 @@ public class GhostEffectInitializer : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject _ghostPrefab;
     private Rigidbody2D _rigidbody;
-    private SquashAndStretch _squashAndStretch;
+    [SerializeField] private SquashAndStretch  _squashAndStretch;
 
     //runtime state
     private float _ghostDelaySeconds;
@@ -28,7 +28,6 @@ public class GhostEffectInitializer : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _squashAndStretch = GetComponent<SquashAndStretch>();
     }
  
 
