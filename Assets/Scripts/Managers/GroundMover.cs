@@ -20,8 +20,6 @@ public class GroundMover : MonoBehaviour
 
     //Components
     private BoxCollider2D _deathAreaCollider;
-
-    private GameStateManager _gameStateManager;
     private DimensionStateHolder _dimensionStateHolder;
     private LavaFreezer _lavaFreezer;
     
@@ -29,11 +27,10 @@ public class GroundMover : MonoBehaviour
     private bool _isFrozen = false;
     
     [Inject]
-    public void Construct(GameStateManager gameStateManager, 
+    public void Construct( 
         DimensionStateHolder dimensionStateHolder,
         LavaFreezer lavaFreezer)
     {
-        _gameStateManager = gameStateManager;
         _dimensionStateHolder = dimensionStateHolder;
         _lavaFreezer = lavaFreezer;
     }
@@ -52,6 +49,7 @@ public class GroundMover : MonoBehaviour
         _deathAreaCollider = GetComponent<BoxCollider2D>();
 
         _currentMoveSpeed = _minSpeed;
+        _isMoving = true;
     }
 
     private void Start()
@@ -63,9 +61,6 @@ public class GroundMover : MonoBehaviour
 
     private void SubscribeEvents()
     {
-        _gameStateManager.OnStateChanged
-            += GameStateManager_OnStateChanged;
-
         _dimensionStateHolder.OnDimensionChanged
             += DimensionStateHolder_OnDimensionChanged;
 
@@ -75,15 +70,6 @@ public class GroundMover : MonoBehaviour
         _lavaFreezer.OnLavaFrozen += FreezeLava;
     }
 
-    private void GameStateManager_OnStateChanged(GameState gameState)
-    {
-        if (gameState == GameState.Started)
-        {
-            _isMoving = true;
-            return;
-        }
-        _isMoving = false;
-    }
     private void DimensionStateHolder_OnDimensionChanged(Dimension dimension)
     {
         IncreaseSpeed();
@@ -177,9 +163,6 @@ public class GroundMover : MonoBehaviour
 
     private void UnsubscribeEvents()
     {
-        _gameStateManager.OnStateChanged 
-            -= GameStateManager_OnStateChanged;
-
         _dimensionStateHolder.OnDimensionChanged
           -= DimensionStateHolder_OnDimensionChanged;
 
