@@ -46,3 +46,10 @@ MonoBehaviour:
       <TimeBetweenLetters>k__BackingField: 0.03
       <TimeToNextSegment>k__BackingField: 0
     <TimeToHideLastSegment>k__BackingField: 2
+  - <Id>k__BackingField: Take the artifact
+    <TextSequenceId>k__BackingField: 3
+    <TextSegments>k__BackingField:
+    - <Text>k__BackingField: I take the artifact
+      <TimeBetweenLetters>k__BackingField: 0.03
+      <TimeToNextSegment>k__BackingField: 0
+    <TimeToHideLastSegment>k__BackingField: 2

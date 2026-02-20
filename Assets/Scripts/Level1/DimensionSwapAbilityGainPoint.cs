@@ -20,7 +20,7 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
 
     [Header("Configuration")]
     [SerializeField] private TextSequenceId _gravityAbilityTextSequence;
-    [SerializeField] private TextSequenceId _artifactTakenTextSequence;
+    [SerializeField] private TextSequenceId _artefactTakenTextSequence;
     [SerializeField] private TextSequenceId _otherTextSequence;
     [SerializeField] private GainPointType _gainPointType;
 
@@ -136,14 +136,14 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
         _visual.enabled = false;
 
         RespawnSystem.Instance.SetIsArtifactTaken(true);
-        RespawnSystem.Instance.UpdateCurrentRespawnPoint(transform.position);
+        RespawnSystem.Instance.UpdateCurrentRespawnPoint(_playerSpawnPosition.position);
 
         TextWriter.Instance.
          StartTypingSequence
          (
-            _gravityAbilityTextSequence,
+            _artefactTakenTextSequence,
          TextWriter.TextFieldsId.TopMiddle,
-         false,
+         true,
          EndCutsceneSequence
          );
     }
