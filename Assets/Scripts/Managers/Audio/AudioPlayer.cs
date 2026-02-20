@@ -11,7 +11,8 @@ public class AudioPlayer : MonoBehaviour
         Jump,
         TrampolineJump,
         ChangeDimension,
-        ChangeDimension2
+        ChangeDimension2,
+        CollectItem
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();

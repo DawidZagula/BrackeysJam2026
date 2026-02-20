@@ -9,7 +9,8 @@ public class MusicPlayer : MonoBehaviour
     public enum AudioName
     {
         MenuTheme,
-        Gameplay
+        Level1,
+        Level2
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
@@ -45,7 +46,10 @@ public class MusicPlayer : MonoBehaviour
                 PlayMusic(AudioName.MenuTheme);
                 break;
             case 1:
-                PlayMusic(AudioName.Gameplay);
+                PlayMusic(AudioName.Level1);
+                break;
+            case 2:
+                PlayMusic(AudioName.Level2);
                 break;
            
         }

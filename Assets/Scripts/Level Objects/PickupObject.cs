@@ -8,6 +8,8 @@ public class PickupObject : MonoBehaviour
         {
             PickupHolder.Instance.AddPickup();
 
+            AudioPlayer.Instance.PlaySound(AudioPlayer.AudioName.CollectItem);
+
             Destroy(gameObject);
         }
     }

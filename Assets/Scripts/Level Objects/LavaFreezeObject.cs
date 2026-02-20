@@ -17,6 +17,8 @@ public class LavaFreezeObject : MonoBehaviour
     {
         if (collision.TryGetComponent(out PlayerMover playerMover))
         {
+            AudioPlayer.Instance.PlaySound(AudioPlayer.AudioName.CollectItem);
+
             _lavaFreezer.FreezeLava(freezeDuration);
             Destroy(gameObject);
         }
