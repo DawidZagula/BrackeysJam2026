@@ -52,6 +52,7 @@ public class PlayerVisual : MonoBehaviour
 
     private void DimensionStateHolder_OnDimensionChanged(Dimension dimension)
     {
+        if (!_playerMover.GravityPowerEnabled) return;
         float targetZ = (dimension == Dimension.Goofy) ? 180f : 0f;
         _playerMover.SetUpsideDown(dimension == Dimension.Goofy);
 
