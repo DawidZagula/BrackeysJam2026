@@ -3894,9 +3894,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundMover
   _deathAreaHeight: 3.64
-  _maxSpeed: 20
-  _minSpeed: 0
-  _speedIncreasePercent: 0.2
+  _maxSpeed: 3
+  _minSpeed: 0.2
+  _speedIncreasePercent: 0
   _currentMoveSpeed: 1
 --- !u!61 &2525615483933105718
 BoxCollider2D:
