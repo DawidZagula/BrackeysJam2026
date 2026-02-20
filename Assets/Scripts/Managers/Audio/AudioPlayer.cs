@@ -46,13 +46,13 @@ public class AudioPlayer : MonoBehaviour
         _audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
     }
 
-    public void PlaySound(AudioName name)
+    public void PlaySound(AudioName name, float volume = 1f)
     {
         if (name == AudioName.ChangeDimension ||  name == AudioName.ChangeDimension2)
         {
             StopCurrentlyPlayedSound();
         }
-     _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
+     _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name], volume);
     }
     public void StopCurrentlyPlayedSound() => _audioSource.Stop();
     public bool IsPlaying() => _audioSource.isPlaying;

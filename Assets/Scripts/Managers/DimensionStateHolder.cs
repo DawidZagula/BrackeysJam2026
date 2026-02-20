@@ -6,6 +6,7 @@ using Zenject;
 public class DimensionStateHolder
 {
     private Dimension _dimension;
+    private float _SFXVolume = 0.05f;
     
     public Dimension CurrentDimension
     {
@@ -22,12 +23,6 @@ public class DimensionStateHolder
     
     private InputReader _inputReader;
     
-
-    //private void OnDimensionChangePressed(object sender, System.EventArgs e)
-    //{
-    //    ChangeDimension();
-    //}
-    
     public void ChangeDimension()
     {
         CurrentDimension = 
@@ -39,7 +34,7 @@ public class DimensionStateHolder
             AudioPlayer.AudioName.ChangeDimension2 :
             AudioPlayer.AudioName.ChangeDimension;
 
-        AudioPlayer.Instance.PlaySound(soundToPlay);
+        AudioPlayer.Instance.PlaySound(soundToPlay, _SFXVolume);
     }
 
 }
