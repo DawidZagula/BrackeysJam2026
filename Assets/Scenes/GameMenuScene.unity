@@ -404,22 +404,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 834725097613508802, guid: 2dd7b81f39b480d4d91f77317923b6d1, type: 3}
-      propertyPath: _audioClipList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 834725097613508802, guid: 2dd7b81f39b480d4d91f77317923b6d1, type: 3}
-      propertyPath: '_audioClipList.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 4533f357d5f9c7443a22f9f1aa904753, type: 3}
-    - target: {fileID: 834725097613508802, guid: 2dd7b81f39b480d4d91f77317923b6d1, type: 3}
-      propertyPath: '_audioClipList.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 06d18beb5a7e78f4693823ebcc9c3eb4, type: 3}
-    - target: {fileID: 834725097613508802, guid: 2dd7b81f39b480d4d91f77317923b6d1, type: 3}
-      propertyPath: '_audioClipList.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 7fbf4a445980d8643a6ea9e6a2c29019, type: 3}
     - target: {fileID: 5469741287634787375, guid: 2dd7b81f39b480d4d91f77317923b6d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1013.03687
@@ -641,34 +625,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1277881611272088475, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
-      propertyPath: _audioClipList.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1277881611272088475, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
-      propertyPath: '_audioClipList.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 0f356be16e252a949958a0cddab029e0, type: 3}
-    - target: {fileID: 1277881611272088475, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
-      propertyPath: '_audioClipList.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: e17747bbc8b5c3f43b39d40c3251a42e, type: 3}
-    - target: {fileID: 1277881611272088475, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
-      propertyPath: '_audioClipList.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: dcd7ecd251e2ac243bd913bf902db43f, type: 3}
-    - target: {fileID: 1277881611272088475, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
-      propertyPath: '_audioClipList.Array.data[3]'
-      value: 
-      objectReference: {fileID: 8300000, guid: e278f3224257fa44caa0b77abe87427a, type: 3}
-    - target: {fileID: 1277881611272088475, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
-      propertyPath: '_audioClipList.Array.data[4]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 7be5bdcb227ff70449ff815106fbae77, type: 3}
-    - target: {fileID: 1277881611272088475, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
-      propertyPath: '_audioClipList.Array.data[5]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 097e2f82bb0ec414384f7f5e837ef822, type: 3}
     - target: {fileID: 4827655642380472103, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
       propertyPath: m_Name
       value: AudioPlayer

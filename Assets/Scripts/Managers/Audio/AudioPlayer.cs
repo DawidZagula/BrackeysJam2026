@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class AudioPlayer : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class AudioPlayer : MonoBehaviour
         TrampolineJump,
         ChangeDimension,
         ChangeDimension2,
-        CollectItem
+        CollectItem,
+        TransitionThroughPortal,
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
@@ -44,7 +46,14 @@ public class AudioPlayer : MonoBehaviour
         _audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
     }
 
-    public void PlaySound(AudioName name) => _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
+    public void PlaySound(AudioName name)
+    {
+        if (name == AudioName.ChangeDimension ||  name == AudioName.ChangeDimension2)
+        {
+            StopCurrentlyPlayedSound();
+        }
+     _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
+    }
     public void StopCurrentlyPlayedSound() => _audioSource.Stop();
     public bool IsPlaying() => _audioSource.isPlaying;
 

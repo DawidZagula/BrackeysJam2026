@@ -9,6 +9,7 @@ public class SceneTransitionTrigger : MonoBehaviour
     {
         if (collision.TryGetComponent(out PlayerMover player))
         {
+            AudioPlayer.Instance.PlaySound(AudioPlayer.AudioName.TransitionThroughPortal);
             SceneLoader.ProcessLoadScene(_nextScene);
         }
     }
