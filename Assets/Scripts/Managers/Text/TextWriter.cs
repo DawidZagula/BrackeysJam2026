@@ -16,6 +16,9 @@ public class TextWriter : MonoBehaviour
         BottomMiddle
     }
 
+    [Header("Configuration")]
+    [SerializeField] private bool _hasSingleTextField;
+
     [Header("References")]
     [SerializeField] private TextMeshProUGUI[] _levelTextFields;
     [SerializeField] private TextMeshProUGUI _currentTextField;
@@ -31,9 +34,15 @@ public class TextWriter : MonoBehaviour
     {
         Instance = this;
 
-        InitializeIdTextFieldMap();
-
-        DisableTextFields();
+        if (_hasSingleTextField)
+        {
+            _currentTextField.gameObject.SetActive(false);
+        }
+        else
+        {
+            InitializeIdTextFieldMap();
+            DisableTextFields();
+        }
     }
 
     private void InitializeIdTextFieldMap()
@@ -48,7 +57,7 @@ public class TextWriter : MonoBehaviour
     {
         foreach (TextMeshProUGUI textField in _levelTextFields)
         {
-            textField.enabled = false;
+            textField.gameObject.SetActive(false);
         }
     }
 
@@ -125,7 +134,7 @@ public class TextWriter : MonoBehaviour
 
     private void ToggleCurrentTextFieldVisilibity(bool newState)
     {
-        _currentTextField.enabled = newState;
+        _currentTextField.gameObject.SetActive(newState);
     }
 
 }
