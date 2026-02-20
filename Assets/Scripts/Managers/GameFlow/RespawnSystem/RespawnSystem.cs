@@ -29,13 +29,18 @@ public class RespawnSystem : MonoBehaviour
 
     private void ResetPersistentData()
     {
-        _persistentData.SpawnPointPosition = new Vector3(0, 0,0);
+        _persistentData.SpawnPointPosition = new Vector3(0, 0, 0);
         _persistentData.IsAbilityLearnt = false;
+        _persistentData.IsArtefactTaken = false;
     }
 
     public void UpdateCurrentRespawnPoint(Vector3 newRespawnPosition)
     {
         _persistentData.SpawnPointPosition = newRespawnPosition;
+    }
+    public bool GetIsAbilityLearnt()
+    {
+        return _persistentData.IsAbilityLearnt;
     }
 
     public void SetIsAbilityLearnt(bool isAbilityLearnt)
@@ -43,9 +48,14 @@ public class RespawnSystem : MonoBehaviour
         _persistentData.IsAbilityLearnt = isAbilityLearnt;
     }
 
-    public bool GetIsAbilityLearnt()
+    public bool GetIsArtifactTaken()
     {
-        return _persistentData.IsAbilityLearnt;
+        return _persistentData.IsArtefactTaken;
+    }
+
+    public void SetIsArtifactTaken(bool isArtifactTaken)
+    {
+        _persistentData.IsArtefactTaken = isArtifactTaken;
     }
 }
 

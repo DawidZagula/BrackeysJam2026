@@ -26,5 +26,8 @@ public enum TextSequenceId
 {
     Level_1_Intro,
     Level_1_GainGravityAbility,
-    ReachedSpawnPoint
+    ReachedSpawnPoint,
+    Level_1_ArtifactTaken,
+    Level_2_Intro,
+    Outro
 }

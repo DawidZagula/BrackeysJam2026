@@ -103,18 +103,21 @@ public class TextWriter : MonoBehaviour
             textField.gameObject.SetActive(false);
         }
 
+        _currentTextField = textField;
+
         onFinish?.Invoke();
     }
 
-    public void SetTextField(TextFieldsId textFieldId)
-    {
-        _currentTextField = _idTextFieldMap[textFieldId];
-    }
+    //public void SetTextField(TextFieldsId textFieldId)
+    //{
+    //    _currentTextField = _idTextFieldMap[textFieldId];
+    //}
 
     public void ClearText()
     {
         _currentTextField.text = string.Empty;
         ToggleCurrentTextFieldVisilibity(false);
+        Debug.Log("Text cleared");
     }
 
     private void ToggleCurrentTextFieldVisilibity(bool newState)

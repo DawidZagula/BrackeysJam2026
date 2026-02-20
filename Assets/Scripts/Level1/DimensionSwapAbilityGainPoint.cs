@@ -1,18 +1,28 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
 
 public class DimensionSwapAbilityGainPoint : MonoBehaviour
 {
+    private enum GainPointType
+    {
+        GravityAbility,
+        Artefact,
+        PureCutscene
+    }
 
-    //References
+    [Header("References")]
     [SerializeField] private Player _player;
     [SerializeField] private Transform _playerSpawnPosition;
     private GameStateManager _gameStateManager;
     private SpriteRenderer _visual;
 
     [Header("Configuration")]
-    [SerializeField] private TextSequenceId _cutsceneTextSequence;
+    [SerializeField] private TextSequenceId _gravityAbilityTextSequence;
+    [SerializeField] private TextSequenceId _artifactTakenTextSequence;
+    [SerializeField] private TextSequenceId _otherTextSequence;
+    [SerializeField] private GainPointType _gainPointType;
 
     //Runtime state
     private bool _isUsed;
@@ -30,43 +40,74 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
 
     private void Start()
     {
+        switch (_gainPointType)
+        {
+            case GainPointType.GravityAbility:
+                UpdateGravityChangeRelated();
+                break;
+
+            case GainPointType.Artefact:
+                UpdateArtifactRelated();
+                break;
+        }
+    }
+
+    private void UpdateGravityChangeRelated()
+    {
         if (RespawnSystem.Instance.GetIsAbilityLearnt())
         {
             _player.ToggleGravityChangeAvailable(true);
-            
+
+            Destroy(gameObject);
+        }
+    }
+
+    private void UpdateArtifactRelated()
+    {
+        if (RespawnSystem.Instance.GetIsArtifactTaken())
+        {
             Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_isUsed) {return;}
+        if (_isUsed) { return; }
 
         if (collision.gameObject.TryGetComponent(out Player player))
         {
             _isUsed = true;
 
-            RespawnSystem.Instance.SetIsAbilityLearnt(true);
-            RespawnSystem.Instance.UpdateCurrentRespawnPoint(transform.position);
-
             _gameStateManager.ChangeCurrentState(GameState.Cutscene);
 
-            FadeTransitionManager.Instance.FadeOut(StartCutsceneSequence);
+            if (_gainPointType == GainPointType.GravityAbility)
+            {
+                FadeTransitionManager.Instance.FadeOut(StartGravityGainCutsceneSequence);
+            }
+            else if (_gainPointType == GainPointType.Artefact)
+            {
+                FadeTransitionManager.Instance.FadeOut(StartArtifactTakenCutsceneSequence);
+            }
+            else
+            {
+                FadeTransitionManager.Instance.FadeOut(StartCutscene);
+            }
         }
-    }
+    }   
 
-    private void StartCutsceneSequence()
+    private void StartGravityGainCutsceneSequence()
     {
         _visual.enabled = false;
 
-        TextWriter.Instance.SetTextField(TextWriter.TextFieldsId.TopMiddle);
+        RespawnSystem.Instance.SetIsAbilityLearnt(true);
+        RespawnSystem.Instance.UpdateCurrentRespawnPoint(transform.position);
 
         TextWriter.Instance.
             StartTypingSequence
-            (_cutsceneTextSequence, TextWriter.TextFieldsId.TopMiddle, false, EndCutsceneSequence);
+            (_gravityAbilityTextSequence, TextWriter.TextFieldsId.TopMiddle, false, EndGravityChangeGainCutsceneSequence);
     }
 
-    private void EndCutsceneSequence()
+    private void EndGravityChangeGainCutsceneSequence()
     {
         FadeTransitionManager.Instance.FadeIn(ResumeControlWithDimensionChangeAbility);
     }
@@ -75,7 +116,7 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
     {
         _player.ToggleGravityChangeAvailable(true);
 
-        _gameStateManager.ChangeCurrentState(GameState.Started);
+        ResumeControl();
 
         StartCoroutine(CheckIfUsedAbilityRoutine());
     }
@@ -88,5 +129,39 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
         }
 
         TextWriter.Instance.ClearText();
+    }
+
+    private void StartArtifactTakenCutsceneSequence()
+    {
+        _visual.enabled = false;
+
+        RespawnSystem.Instance.SetIsArtifactTaken(true);
+        RespawnSystem.Instance.UpdateCurrentRespawnPoint(transform.position);
+
+        TextWriter.Instance.
+         StartTypingSequence
+         (
+            _gravityAbilityTextSequence,
+         TextWriter.TextFieldsId.TopMiddle,
+         false,
+         EndCutsceneSequence
+         );
+    }
+
+    private void StartCutscene()
+    {
+        TextWriter.Instance.
+     StartTypingSequence
+     (_otherTextSequence, TextWriter.TextFieldsId.TopMiddle, true, EndCutsceneSequence);
+    }
+
+    private void EndCutsceneSequence()
+    {
+        FadeTransitionManager.Instance.FadeIn(ResumeControl);
+    }
+
+    private void ResumeControl()
+    {
+        _gameStateManager.ChangeCurrentState(GameState.Started);
     }
 }

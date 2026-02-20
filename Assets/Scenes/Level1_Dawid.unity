@@ -1004,13 +1004,13 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 956238493005995720}
-    - target: {fileID: 2516734278426586241, guid: 3679528b46e3e964a8b17432a78ebcf9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.61
+    - target: {fileID: 917538754715692257, guid: 3679528b46e3e964a8b17432a78ebcf9, type: 3}
+      propertyPath: _artifactTakenTextSequence
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 2516734278426586241, guid: 3679528b46e3e964a8b17432a78ebcf9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.5000007
+    - target: {fileID: 917538754715692257, guid: 3679528b46e3e964a8b17432a78ebcf9, type: 3}
+      propertyPath: _gravityAbilityTextSequence
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2659445964600834703, guid: 3679528b46e3e964a8b17432a78ebcf9, type: 3}
       propertyPath: m_AnchorMax.y
