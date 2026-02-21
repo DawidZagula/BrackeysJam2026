@@ -48,10 +48,10 @@ MonoBehaviour:
   _audioClipList:
   - {fileID: 8300000, guid: 4533f357d5f9c7443a22f9f1aa904753, type: 3}
   - {fileID: 8300000, guid: 06d18beb5a7e78f4693823ebcc9c3eb4, type: 3}
+  - {fileID: 8300000, guid: caba9bdbf70d5e1468e0e91e19407e26, type: 3}
+  - {fileID: 8300000, guid: 7fbf4a445980d8643a6ea9e6a2c29019, type: 3}
   - {fileID: 8300000, guid: 7fbf4a445980d8643a6ea9e6a2c29019, type: 3}
   - {fileID: 8300000, guid: da1cbb9e06457f446a04becb031ca998, type: 3}
-  - {fileID: 8300000, guid: 06d18beb5a7e78f4693823ebcc9c3eb4, type: 3}
-  - {fileID: 8300000, guid: caba9bdbf70d5e1468e0e91e19407e26, type: 3}
 --- !u!82 &5214739411940505565
 AudioSource:
   m_ObjectHideFlags: 0
