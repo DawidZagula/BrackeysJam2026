@@ -15,6 +15,8 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
     [Header("References")]
     [SerializeField] private Player _player;
     [SerializeField] private Transform _playerSpawnPosition;
+    [SerializeField] private Transform _teleportToArtefact;
+    [SerializeField] private Transform _trueGravityChangeGainer;
     private GameStateManager _gameStateManager;
     private SpriteRenderer _visual;
 
@@ -134,9 +136,13 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
     private void StartArtifactTakenCutsceneSequence()
     {
         _visual.enabled = false;
+        _teleportToArtefact.gameObject.SetActive(false);
+        _trueGravityChangeGainer.gameObject.SetActive(true);
 
         RespawnSystem.Instance.SetIsArtifactTaken(true);
         RespawnSystem.Instance.UpdateCurrentRespawnPoint(_playerSpawnPosition.position);
+
+        _player.transform.position = _playerSpawnPosition.position;
 
         TextWriter.Instance.
          StartTypingSequence

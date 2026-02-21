@@ -366,6 +366,11 @@ public class PlayerMover : MonoBehaviour
         _rigidbody.bodyType = RigidbodyType2D.Static;
     }
 
+    public void EnableMovement()
+    {
+        _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+    }
+
     private void UnsubscribeEvents()
     {
         _inputReader.OnMove -= InputReader_OnMove;
