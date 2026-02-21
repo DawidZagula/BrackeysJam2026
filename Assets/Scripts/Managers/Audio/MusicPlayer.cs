@@ -13,7 +13,7 @@ public class MusicPlayer : MonoBehaviour
         Level2,
         Level3,
         Level4,
-        Outro
+        Level5
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
@@ -53,6 +53,15 @@ public class MusicPlayer : MonoBehaviour
                 break;
             case 2:
                 PlayMusic(AudioName.Level2);
+                break;
+            case 3:
+                PlayMusic(AudioName.Level3);
+                break;
+            case 4:
+                PlayMusic(AudioName.Level4);
+                break;
+            case 5:
+                PlayMusic(AudioName.Level5);
                 break;
            
         }
