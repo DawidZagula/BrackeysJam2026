@@ -12,15 +12,18 @@ public class SceneLoader
                 break;
             case GameScene.Level_1:
                 FadeTransitionManager.Instance.FadeOut(() => LoadScene(1));
-
                 break;
             case GameScene.Level_2:
                 FadeTransitionManager.Instance.FadeOut(() => LoadScene(2));
-
                 break;
             case GameScene.Level_3:
                 FadeTransitionManager.Instance.FadeOut(() => LoadScene(3));
-
+                break;
+            case GameScene.Level_4:
+                FadeTransitionManager.Instance.FadeOut(() => LoadScene(4));
+                break;
+            case GameScene.Level_5:
+                FadeTransitionManager.Instance.FadeOut(() => LoadScene(5));
                 break;
         }
     }
