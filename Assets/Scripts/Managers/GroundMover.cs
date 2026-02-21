@@ -94,16 +94,6 @@ public class GroundMover : MonoBehaviour
         if (!_isMoving) { return; }
 
         MoveUp();
-
-        //For debugging
-        if (Keyboard.current.pKey.wasPressedThisFrame)
-        {
-            IncreaseSpeed();
-        }
-        if (Keyboard.current.mKey.wasPressedThisFrame)
-        {
-            DecreaseSpeed();
-        }
     }
 
     private void HandleFreezeTimer()
