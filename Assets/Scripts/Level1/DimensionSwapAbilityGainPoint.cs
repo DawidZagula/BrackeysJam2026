@@ -62,6 +62,13 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
 
             Destroy(gameObject);
         }
+        else
+        {
+            if (gameObject.activeInHierarchy && !RespawnSystem.Instance.GetIsArtifactTaken())
+            {
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     private void UpdateArtifactRelated()
@@ -104,6 +111,9 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
         RespawnSystem.Instance.SetIsAbilityLearnt(true);
         RespawnSystem.Instance.UpdateCurrentRespawnPoint(transform.position);
 
+        _player.GetComponent<PlayerMover>().StopAllMovement();
+
+
         TextWriter.Instance.
             StartTypingSequence
             (_gravityAbilityTextSequence, TextWriter.TextFieldsId.TopMiddle, false, EndGravityChangeGainCutsceneSequence);
@@ -111,6 +121,7 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
 
     private void EndGravityChangeGainCutsceneSequence()
     {
+        _player.GetComponent<PlayerMover>().EnableMovement();
         FadeTransitionManager.Instance.FadeIn(ResumeControlWithDimensionChangeAbility);
     }
 
@@ -142,6 +153,8 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
         RespawnSystem.Instance.SetIsArtifactTaken(true);
         RespawnSystem.Instance.UpdateCurrentRespawnPoint(_playerSpawnPosition.position);
 
+        _player.GetComponent<PlayerMover>().StopAllMovement();
+
         _player.transform.position = _playerSpawnPosition.position;
 
         TextWriter.Instance.
@@ -163,6 +176,7 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
 
     private void EndCutsceneSequence()
     {
+        _player.GetComponent<PlayerMover>().EnableMovement();
         FadeTransitionManager.Instance.FadeIn(ResumeControl);
     }
 
