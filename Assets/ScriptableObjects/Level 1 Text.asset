@@ -16,23 +16,33 @@ MonoBehaviour:
   - <Id>k__BackingField: Level 1 Intro
     <TextSequenceId>k__BackingField: 0
     <TextSegments>k__BackingField:
-    - <Text>k__BackingField: What is this strange place?
+    - <Text>k__BackingField: At the heart of the temple beats a crystal heart.
       <TimeBetweenLetters>k__BackingField: 0.1
-      <TimeToNextSegment>k__BackingField: 2
-    - <Text>k__BackingField: How did I get here?
+      <TimeToNextSegment>k__BackingField: 1
+    - <Text>k__BackingField: An artefact from another world.
       <TimeBetweenLetters>k__BackingField: 0.1
-      <TimeToNextSegment>k__BackingField: 2
-    - <Text>k__BackingField: How do I get out?
+      <TimeToNextSegment>k__BackingField: 1
+    - <Text>k__BackingField: They say whoever holds it can bend gravity, the only
+        force that crosses dimensions.
+      <TimeBetweenLetters>k__BackingField: 0.1
+      <TimeToNextSegment>k__BackingField: 1
+    - <Text>k__BackingField: "Be careful\u2026"
+      <TimeBetweenLetters>k__BackingField: 0.1
+      <TimeToNextSegment>k__BackingField: 1
+    - <Text>k__BackingField: strange places lie ahead.
       <TimeBetweenLetters>k__BackingField: 0.1
       <TimeToNextSegment>k__BackingField: 2
     <TimeToHideLastSegment>k__BackingField: 2
   - <Id>k__BackingField: Level 1 Gain Gravity Ability
     <TextSequenceId>k__BackingField: 1
     <TextSegments>k__BackingField:
-    - <Text>k__BackingField: I feel... strange.
+    - <Text>k__BackingField: Gravity surges through you.
       <TimeBetweenLetters>k__BackingField: 0.03
       <TimeToNextSegment>k__BackingField: 1
-    - <Text>k__BackingField: Like if I was somehow in two places at the same time.
+    - <Text>k__BackingField: The path to another dimension opens.
+      <TimeBetweenLetters>k__BackingField: 0.03
+      <TimeToNextSegment>k__BackingField: 1
+    - <Text>k__BackingField: 'Things are about to get strange. '
       <TimeBetweenLetters>k__BackingField: 0.03
       <TimeToNextSegment>k__BackingField: 1
     - <Text>k__BackingField: Press E to change dimension.
@@ -49,7 +59,13 @@ MonoBehaviour:
   - <Id>k__BackingField: Take the artifact
     <TextSequenceId>k__BackingField: 3
     <TextSegments>k__BackingField:
-    - <Text>k__BackingField: I take the artifact
+    - <Text>k__BackingField: The heart of the temple. You reach out for it.
       <TimeBetweenLetters>k__BackingField: 0.03
-      <TimeToNextSegment>k__BackingField: 0
+      <TimeToNextSegment>k__BackingField: 1
+    - <Text>k__BackingField: A strange feeling overcomes you.
+      <TimeBetweenLetters>k__BackingField: 0.03
+      <TimeToNextSegment>k__BackingField: 1
+    - <Text>k__BackingField: It takes you back, yet something has changed.
+      <TimeBetweenLetters>k__BackingField: 0.03
+      <TimeToNextSegment>k__BackingField: 1
     <TimeToHideLastSegment>k__BackingField: 2
