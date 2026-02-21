@@ -37,11 +37,10 @@ public class RespawnSystem : MonoBehaviour
         _persistentData.SpawnPointUsedState.Clear();
     }
 
-    public int RegisterRespawnPoint(RespawnPoint point)
+    public int RegisterRespawnPoint(RespawnPoint point, int id)
     {
         _respawnPoints.Add(point);
 
-        int id = _respawnPoints.Count - 1;
         if (!_spawnPointUsedState.ContainsKey(id))
             _spawnPointUsedState[id] = false;
 

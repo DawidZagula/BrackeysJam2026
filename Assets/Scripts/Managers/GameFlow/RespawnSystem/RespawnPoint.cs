@@ -9,7 +9,10 @@ public class RespawnPoint : MonoBehaviour
 
     private void Start()
     {
-        SpawnPointId = RespawnSystem.Instance.RegisterRespawnPoint(this);
+        int index = transform.GetSiblingIndex();
+
+
+        SpawnPointId = RespawnSystem.Instance.RegisterRespawnPoint(this, index);
 
         _isUsed = RespawnSystem.Instance.GetRespawnPointUsed(SpawnPointId);
     }
