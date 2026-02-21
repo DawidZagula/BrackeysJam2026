@@ -69,3 +69,16 @@ MonoBehaviour:
       <TimeBetweenLetters>k__BackingField: 0.03
       <TimeToNextSegment>k__BackingField: 1
     <TimeToHideLastSegment>k__BackingField: 2
+  - <Id>k__BackingField: Outro
+    <TextSequenceId>k__BackingField: 5
+    <TextSegments>k__BackingField:
+    - <Text>k__BackingField: Test outro 1
+      <TimeBetweenLetters>k__BackingField: 0.03
+      <TimeToNextSegment>k__BackingField: 2
+    - <Text>k__BackingField: Test outro 2
+      <TimeBetweenLetters>k__BackingField: 0.03
+      <TimeToNextSegment>k__BackingField: 1
+    - <Text>k__BackingField: Test outro 3
+      <TimeBetweenLetters>k__BackingField: 0.03
+      <TimeToNextSegment>k__BackingField: 1
+    <TimeToHideLastSegment>k__BackingField: 2

@@ -73,6 +73,20 @@ public class TextWriter : MonoBehaviour
         }
     }
 
+    public void StartTypingSequence(TextSequenceId sequenceId, TextMeshProUGUI targetField, bool shouldClearAtEnd, Action onFinish = null)
+    {
+        targetField.gameObject.SetActive(true);
+
+        foreach (TextSequence textSequence in _levelText.TextSequences)
+        {
+            if (textSequence.TextSequenceId != sequenceId)
+                continue;
+
+            StartCoroutine(TypingRoutine(textSequence, targetField, shouldClearAtEnd, onFinish));
+            return;
+        }
+    }
+
     private IEnumerator TypingRoutine(TextSequence textSequence, TextMeshProUGUI textField, bool shouldClearAtEnd, Action onFinish)
     {
         int textSegmentsCount = textSequence.TextSegments.Length;

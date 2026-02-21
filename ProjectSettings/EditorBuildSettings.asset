@@ -18,8 +18,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Level B.unity
     guid: 3316a1cff5a70b24ea9d5d17c5d3538a
   - enabled: 1
-    path: Assets/Scenes/TemplateNewLevel.unity
-    guid: 131023d8a70b6c64abe2054f48571678
+    path: Assets/Scenes/Level1_Tim.unity
+    guid: 921d8c575c492a646b78d1288842035c
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: 462443278bca61e45b915796d59657a7

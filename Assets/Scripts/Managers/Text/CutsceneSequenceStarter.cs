@@ -10,8 +10,6 @@ public class CutsceneSequenceStarter : MonoBehaviour
     [SerializeField] private DimensionSwapAbilityGainPoint _SequncePlayer;
     [SerializeField] private TextSequenceId _SequenceId;
 
-   // private bool _isUsed;
-
     private void Start()
     {
 
