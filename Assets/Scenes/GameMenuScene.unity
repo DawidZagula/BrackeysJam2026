@@ -461,6 +461,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1166300610028075577, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074097167726605608, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 347.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2375501085043346074, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -565,6 +573,10 @@ PrefabInstance:
       propertyPath: _shouldAnimate
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4200887742512550716, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5947481389194573484, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_Name
       value: CanvasMenu
@@ -600,6 +612,20 @@ PrefabInstance:
     - target: {fileID: 8890686469077047481, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909208286732515332, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1343
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909208286732515332, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201785300978786640, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_text
+      value: "Yahiaoui Ayyoub - Art\nName Surname - Job\nName Surname - Job\nTimothy
+        Tenido - Programming & level Design\nDawid Zagu\u0142a - Programming & Level
+        Design"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
