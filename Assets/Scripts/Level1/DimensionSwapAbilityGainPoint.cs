@@ -99,10 +99,16 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
             }
             else
             {
-                FadeTransitionManager.Instance.FadeOut(StartCutscene);
+                FadeOutCutscene();
             }
+
         }
     }   
+
+    public void FadeOutCutscene()
+    {
+        FadeTransitionManager.Instance.FadeOut(StartCutscene);
+    }
 
     private void StartGravityGainCutsceneSequence()
     {
@@ -167,8 +173,10 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
          );
     }
 
-    private void StartCutscene()
+    public void StartCutscene()
     {
+        _player.GetComponent<PlayerMover>().StopAllMovement();
+
         TextWriter.Instance.
      StartTypingSequence
      (_otherTextSequence, TextWriter.TextFieldsId.TopMiddle, true, EndCutsceneSequence);
@@ -183,5 +191,10 @@ public class DimensionSwapAbilityGainPoint : MonoBehaviour
     private void ResumeControl()
     {
         _gameStateManager.ChangeCurrentState(GameState.Started);
+    }
+
+    public void SetOtherTextSequence(TextSequenceId textSequence)
+    {
+        _otherTextSequence = textSequence;
     }
 }

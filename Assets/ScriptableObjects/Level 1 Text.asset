@@ -17,20 +17,20 @@ MonoBehaviour:
     <TextSequenceId>k__BackingField: 0
     <TextSegments>k__BackingField:
     - <Text>k__BackingField: At the heart of the temple beats a crystal heart.
-      <TimeBetweenLetters>k__BackingField: 0.1
+      <TimeBetweenLetters>k__BackingField: 0.025
       <TimeToNextSegment>k__BackingField: 1
     - <Text>k__BackingField: An artefact from another world.
-      <TimeBetweenLetters>k__BackingField: 0.1
+      <TimeBetweenLetters>k__BackingField: 0.025
       <TimeToNextSegment>k__BackingField: 1
     - <Text>k__BackingField: They say whoever holds it can bend gravity, the only
         force that crosses dimensions.
-      <TimeBetweenLetters>k__BackingField: 0.1
+      <TimeBetweenLetters>k__BackingField: 0.025
       <TimeToNextSegment>k__BackingField: 1
     - <Text>k__BackingField: "Be careful\u2026"
-      <TimeBetweenLetters>k__BackingField: 0.1
+      <TimeBetweenLetters>k__BackingField: 0.025
       <TimeToNextSegment>k__BackingField: 1
     - <Text>k__BackingField: strange places lie ahead.
-      <TimeBetweenLetters>k__BackingField: 0.1
+      <TimeBetweenLetters>k__BackingField: 0.025
       <TimeToNextSegment>k__BackingField: 2
     <TimeToHideLastSegment>k__BackingField: 2
   - <Id>k__BackingField: Level 1 Gain Gravity Ability
