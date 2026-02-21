@@ -10,7 +10,10 @@ public class MusicPlayer : MonoBehaviour
     {
         MenuTheme,
         Level1,
-        Level2
+        Level2,
+        Level3,
+        Level4,
+        Outro
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
