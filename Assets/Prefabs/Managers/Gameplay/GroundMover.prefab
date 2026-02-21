@@ -3895,7 +3895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GroundMover
   _deathAreaHeight: 3.64
   _maxSpeed: 3
-  _minSpeed: 0.2
+  _minSpeed: 0
   _speedIncreasePercent: 0
   _currentMoveSpeed: 1
 --- !u!61 &2525615483933105718
@@ -6120,6 +6120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1298249245695963595}
   - component: {fileID: 2175834446968548787}
+  - component: {fileID: 7160714954509053692}
   m_Layer: 0
   m_Name: GoofyDimensionVisual
   m_TagString: Untagged
@@ -6191,7 +6192,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: fe1bdb8411af0bb4a8ee34fbf4ebf2cc, type: 3}
+  m_Sprite: {fileID: 1659985312132837270, guid: 2e357e24186b8924a93d5fd0a11593a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6201,6 +6202,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &7160714954509053692
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012423021297122455}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 360c03e7767e1e0488c8dd7ea89b8db8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8020242294224798198
 GameObject:
   m_ObjectHideFlags: 0

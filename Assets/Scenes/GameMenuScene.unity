@@ -623,9 +623,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9201785300978786640, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_text
-      value: "Yahiaoui Ayyoub - Art\nName Surname - Job\nName Surname - Job\nTimothy
-        Tenido - Programming & level Design\nDawid Zagu\u0142a - Programming & Level
-        Design"
+      value: "Yahiaoui Ayyoub - Art\nName Surname - Job\nTh\xE9o B\xE9gault - Programming
+        & level Design\nTimothy Tenido - Programming & level Design\nDawid Zagu\u0142a
+        - Programming & Level Design"
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201785300978786640, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: de0aa5e633f8b964faa31e639461c393, type: 2}
+    - target: {fileID: 9201785300978786640, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201785300978786640, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5179982057492851272, guid: de0aa5e633f8b964faa31e639461c393, type: 2}
+    - target: {fileID: 9201785300978786640, guid: c04314097057dc548a8240edf97e3516, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -714,7 +730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320076006129913971, guid: 3cecf75e16eec624a811fb994b0f0764, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 622819428386876948, guid: 3cecf75e16eec624a811fb994b0f0764, type: 3}
       propertyPath: m_Pivot.x
