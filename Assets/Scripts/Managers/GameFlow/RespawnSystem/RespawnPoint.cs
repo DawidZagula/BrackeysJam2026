@@ -25,6 +25,8 @@ public class RespawnPoint : MonoBehaviour
             RespawnSystem.Instance.UpdateCurrentRespawnPoint(_playerSpawnPosition.position);
             _isUsed = true;
 
+            AudioPlayer.Instance.PlaySound(AudioPlayer.AudioName.SpawnPoint);
+
             RespawnSystem.Instance.SetRespawnPointUsed(SpawnPointId, true);
 
             TextWriter.Instance.StartTypingSequence(

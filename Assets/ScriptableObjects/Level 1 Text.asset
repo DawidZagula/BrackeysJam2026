@@ -72,13 +72,16 @@ MonoBehaviour:
   - <Id>k__BackingField: Outro
     <TextSequenceId>k__BackingField: 5
     <TextSegments>k__BackingField:
-    - <Text>k__BackingField: Test outro 1
+    - <Text>k__BackingField: Congratulations.
       <TimeBetweenLetters>k__BackingField: 0.03
       <TimeToNextSegment>k__BackingField: 2
-    - <Text>k__BackingField: Test outro 2
+    - <Text>k__BackingField: You've escaped the temple, and...
       <TimeBetweenLetters>k__BackingField: 0.03
-      <TimeToNextSegment>k__BackingField: 1
-    - <Text>k__BackingField: Test outro 3
+      <TimeToNextSegment>k__BackingField: 2
+    - <Text>k__BackingField: ...the Crystal Heart of Gravity is yours!
       <TimeBetweenLetters>k__BackingField: 0.03
-      <TimeToNextSegment>k__BackingField: 1
+      <TimeToNextSegment>k__BackingField: 2
+    - <Text>k__BackingField: Thank you for playing Gravity Strange.
+      <TimeBetweenLetters>k__BackingField: 0.03
+      <TimeToNextSegment>k__BackingField: 2
     <TimeToHideLastSegment>k__BackingField: 2
