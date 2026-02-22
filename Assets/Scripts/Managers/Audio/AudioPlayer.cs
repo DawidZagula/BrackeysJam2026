@@ -15,7 +15,8 @@ public class AudioPlayer : MonoBehaviour
         ChangeDimension2,
         CollectItem,
         TransitionThroughPortal,
-        SpawnPoint
+        SpawnPoint,
+        EndingSound
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
