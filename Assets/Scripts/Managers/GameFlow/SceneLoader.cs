@@ -25,6 +25,9 @@ public class SceneLoader
             case GameScene.Level_5:
                 FadeTransitionManager.Instance.FadeOut(() => LoadScene(5));
                 break;
+            case GameScene.Outro:
+                FadeTransitionManager.Instance.FadeOut(()=> LoadScene(6));
+                break;
         }
     }
 
