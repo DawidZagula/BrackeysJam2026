@@ -631,9 +631,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9201785300978786640, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_text
-      value: "Yahiaoui Ayyoub - Art\nTimothy Leung - Music & Sound Design\nTh\xE9o
-        B\xE9gault - Programming & Level Design\nTimothy Tenido - Programming & Level
-        Design\nDawid Zagu\u0142a - Programming & Level Design"
+      value: "Yahiaoui Ayyoub - Art\nTimothy Leung - Music & Sound Design\nTheo Begault
+        - Programming & Level Design\nTimothy Tenido - Programming & Level Design\nDawid
+        Zagu\u0142a - Programming & Level Design"
       objectReference: {fileID: 0}
     - target: {fileID: 9201785300978786640, guid: c04314097057dc548a8240edf97e3516, type: 3}
       propertyPath: m_fontAsset
