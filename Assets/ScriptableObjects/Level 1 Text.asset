@@ -45,7 +45,7 @@ MonoBehaviour:
     - <Text>k__BackingField: 'Things are about to get strange. '
       <TimeBetweenLetters>k__BackingField: 0.03
       <TimeToNextSegment>k__BackingField: 1.5
-    - <Text>k__BackingField: Press E to change dimension.
+    - <Text>k__BackingField: Press E or SHIFT to change dimension.
       <TimeBetweenLetters>k__BackingField: 0.03
       <TimeToNextSegment>k__BackingField: 1.5
     <TimeToHideLastSegment>k__BackingField: 0
