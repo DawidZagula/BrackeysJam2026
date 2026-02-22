@@ -101,6 +101,17 @@
                 },
                 {
                     "name": "",
+                    "id": "311f6b43-8966-4b3e-8266-a3dea497cee1",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeDimension",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "bac68e7a-ac89-43e6-ac6f-2d1b01b9ac66",
                     "path": "<Keyboard>/q",
                     "interactions": "",
