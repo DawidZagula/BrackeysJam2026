@@ -854,6 +854,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 834725097613508802, guid: 2dd7b81f39b480d4d91f77317923b6d1, type: 3}
+      propertyPath: _audioClipList.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 834725097613508802, guid: 2dd7b81f39b480d4d91f77317923b6d1, type: 3}
+      propertyPath: '_audioClipList.Array.data[6]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5469741287634787375, guid: 2dd7b81f39b480d4d91f77317923b6d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1013.03687
@@ -926,10 +934,6 @@ PrefabInstance:
       propertyPath: _audioClipList.Array.size
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1277881611272088475, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
-      propertyPath: '_audioClipList.Array.data[8]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 46b275dbccdf5184a90b1b28460a9bac, type: 3}
     - target: {fileID: 4827655642380472103, guid: e8be7d2670b6af349a163a4b85bd4be2, type: 3}
       propertyPath: m_Name
       value: AudioPlayer

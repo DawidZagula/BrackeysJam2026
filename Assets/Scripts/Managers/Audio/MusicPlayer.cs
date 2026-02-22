@@ -63,7 +63,9 @@ public class MusicPlayer : MonoBehaviour
             case 5:
                 PlayMusic(AudioName.Level5);
                 break;
-           
+            case 6:
+                StopPlaying();
+                break;
         }
     }
 
@@ -76,7 +78,7 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
-    public void StopPlaying() => _audioSource.Stop();
+    private void StopPlaying() => _audioSource.Stop();
 
     public void SetVolume(float volume)
     {
