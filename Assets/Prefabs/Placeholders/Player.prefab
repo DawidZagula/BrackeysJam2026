@@ -5086,6 +5086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 231891c760f2f5046892b127e5f7aa52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMover
+  GravityPowerEnabled: 1
   _groundCheckPoint: {fileID: 7122984602298109521}
   _groundCheckSize: {x: 0.96, y: 0.11}
   _groundLayer:
@@ -5181,7 +5182,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.01140067}
+  m_Offset: {x: 0.04462433, y: -0.0332222}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5191,7 +5192,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1.0775247}
+  m_Size: {x: 0.50112915, y: 0.95796204}
   m_EdgeRadius: 0
 --- !u!114 &-9012265767084471722
 MonoBehaviour:
